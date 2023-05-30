@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KJ VLABS-Experiment 8</title>
+
+    <!-- Bootstrap Cdn Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+
+    <!-- css file -->
+    <link rel="stylesheet" href="../static/exp8.css">
+
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+    <div class="box">
+        <nav>
+            <ul class="list-group">
+                <li><a href="#" class="logo">
+                        <img src="../static/profile.png">
+                        <span class="nav-item">User</span>
+                    </a></li>
+                <li><a href="/extc.html">
+                        <i class="fas fa-menorah"></i>
+                        <span class="nav-item">Home</span>
+                    </a></li>
+                <li><a href="extc.html">
+                        <i class="fas fa-comment"></i>
+                        <span class="nav-item">About</span>
+                    </a></li>
+                <li><a href="/experiments.html">
+                        <i class="fas fa-chart-bar"></i>
+                        <span class="nav-item">Experiments</span>
+                    </a></li>
+                <li><a href="{{ url_for('logout') }}" class="logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="nav-item">Log out</span>
+                    </a></li>
+            </ul>
+        </nav>
+        <section class="main">
+            <section class="header">
+                <table style="width: 100%; font-weight: bold; color: #b7202e;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="../static/KJSIEITLogoMain (1)_preview_rev_1.png" alt="" class="somaiya" style="width: 100%; max-width: 400px; height: auto;">
+                            </td>
+                            <td>
+                                <h1 style="margin-bottom: 0px ;">K.J. Somaiya Virtual Labs</h1>
+                            </td>
+                            <td>
+                                <img src="../static/SomaiyaTrust.png" alt="" class="trust" style="width: 100%; max-width: 90px; height: auto;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="attendance">
+                <div class="attendance-list" style="width: auto;">
+                    <h2>Experiment 8 - Linear Block Codes</h2>
+                    <div class="table">
+                        <table>
+                            <th><a href="#aim">Aim</a></th>
+                            <th><a href="#apparatus">Apparatus</a></th>
+                            <th><a href="#diagram">Diagram</a></th>
+                            <th><a href="#theory">Code</a></th>
+                            <th><a href="#conclusion">Conclusion</a></th>
+                            <th><a href="/sim8.html">Simulation</a></th>
+                        </table>
+                    </div>
+                    <div>
+                        <p id="aim"><h4>Aim: -</h4>Simulate Linear Block codes using MATLAB</p><br>
+                        <p id="apparatus"><h4>Apparatus: -</h4>matlab</p><br>
+                        <p id="diagram"> <h4>Diagram: -</h4>
+                            <p style="text-align: center;"><img src="../static/lbc.png" alt="" style="width: 100%; max-width: 500px; height: auto;"></p>
+                        </p> <br>
+                        <p id="theory"><h4>Code: -</h4>
+                            <pre>
+                                <code>
+                                    clc
+                                    clear all
+                                    %input generator matrix
+                                    g=input(&#39;enter the generator matrix:&#39;)
+                                    disp(&#39;g=&#39;)
+                                    disp(&#39;order of the linear block code for given generator matrix is:&#39;)
+                                    [n,k]=size(transpose(g))
+                                    for i=1:2^k
+                                    for j=k:-1:1
+                                    if rem(i-1,2^(-j+k+1))&gt;=2^(-j+k)
+                                    u(i,j)=1;
+                                    else
+                                    u(i,j)=0;
+                                    end
+                                    end
+                                    end
+                                    u;
+                                    disp(&#39;the possible code words are :&#39;)
+                                    c=rem(u*g,2)
+                                    disp(&#39;the minimum hamming distance dmin for given block code is=&#39;)
+                                    d_min=min(sum((c(2:2^k,:))&#39;))
+                                    disp(&#39;no. of errors detected&#39;)
+                                    s=d_min-1
+                                    disp(&#39;no of errors that can be corrected&#39;)
+                                    t=(d_min-1)/2
+                                </code>
+                            </pre>
+                        </p>
+                        <p id="conclusion"><h4>Conclusion: -</h4>
+                            Linear block codes are an error-correcting code used in digital communication systems. They improve reliability by detecting and correcting errors that occur during data transmission. Linear block codes are generated by a linear combination of basis vectors, allowing for efficient encoding and decoding of data. While they have some limitations, linear block codes are widely used in various digital communication applications.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <footer>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <p class="Link-head">Quick Links</p>
+                            <p class="Links"><a href="" style="color: black;">Feedback</a></p>
+                            <p class="Links"><a href="https://www.kjsieit.in/simsbackup/2021/Even/php/home.php" style="color: black;" target="_blank">Sims Portal</a></p>
+                            <p class="Links"><a href="https://kjsieit.somaiya.edu.in/en" style="color: black;" target="_blank">KJSIEIT Website</a></p>
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="Link-head">About KJ labs</p>
+                            <p class="Links"><a href="/extc.html" style="color: black;">Home</a></p>
+                            <p class="Links"><a href="" style="color: black;" target="_blank">About Us</a></p>
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="Link-head">Contact Us</p>
+                            <p class="Links"><a
+                                    href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=info@tech.somaiya.edu"
+                                    style="color: black;" target="_blank">info.tech@somaiya.edu</a></p>
+                            <p class="Links" style="color: black; font-size: 14px;">91-22- 24061408 / 24061403</p>
+                            <p class="Links"><a
+                                    href="https://www.google.com/maps/place/K.+J.+Somaiya+Institute+of+Engineering+and+Information+Technology/@19.046058,72.8710809,15z/data=!4m5!3m4!1s0x0:0x473006136ad440dc!8m2!3d19.046058!4d72.8710809"
+                                    target="_blank" style="color: black;">Address</a></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row last">
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="https://www.somaiya.edu.in/en/privacy-policy" style="color: black;" target="_blank">Privacy Policy</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="https://www.somaiya.edu.in/en/terms-and-conditions" style="color: black;"
+                                    target="_blank">Terms and Conditions</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="https://www.somaiya.edu.in/en/disclaimer" style="color: black;"
+                                    target="_blank">Disclaimer</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="extc.html" style="color: black;" target="_blank">&copy; 2022 KJ Labs</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- <div style="padding-left: 10px; font-size: small;">
+                        <p style="text-align: center; display: flex; color: black;" >
+                            Developed By: 
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-right: 0; margin-left: 0;">Pranav Singh,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Sahil Kumar,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Aditya Khedekar,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Vedant Tadala,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Kunal Thakkar.&nbsp</a>
+                        </p>
+                    </div> -->
+                </footer>
+            </section>
+        </section>
+    </div>
+</body>
+</html>

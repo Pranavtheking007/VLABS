@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KJ VLABS-Experiment 5</title>
+
+    <!-- Bootstrap Cdn Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+
+    <!-- css file -->
+    <link rel="stylesheet" href="../static/exp5.css">
+
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+    <div class="box">
+        <nav>
+            <ul class="list-group">
+                <li><a href="#" class="logo">
+                        <img src="../static/profile.png">
+                        <span class="nav-item">User</span>
+                    </a></li>
+                <li><a href="/extc.html">
+                        <i class="fas fa-menorah"></i>
+                        <span class="nav-item">Home</span>
+                    </a></li>
+                <li><a href="extc.html">
+                        <i class="fas fa-comment"></i>
+                        <span class="nav-item">About</span>
+                    </a></li>
+                <li><a href="/experiments.html">
+                        <i class="fas fa-chart-bar"></i>
+                        <span class="nav-item">Experiments</span>
+                    </a></li>
+                <li><a href="{{ url_for('logout') }}" class="logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="nav-item">Log out</span>
+                    </a></li>
+            </ul>
+        </nav>
+        <section class="main">
+            <section class="header">
+                <table style="width: 100%; font-weight: bold; color: #b7202e;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="../static/KJSIEITLogoMain (1)_preview_rev_1.png" alt="" class="somaiya" style="width: 100%; max-width: 400px; height: auto;">
+                            </td>
+                            <td>
+                                <h1 style="margin-bottom: 0px ;">K.J. Somaiya Virtual Labs</h1>
+                            </td>
+                            <td>
+                                <img src="../static/SomaiyaTrust.png" alt="" class="trust" style="width: 100%; max-width: 90px; height: auto;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="attendance">
+                <div class="attendance-list" style="width: auto;">
+                    <h2>Experiment 5 - Quadrature Phase Shift Keying</h2>
+                    <div class="table">
+                        <table>
+                            <th><a href="#aim">Aim</a></th>
+                            <th><a href="#apparatus">Apparatus</a></th>
+                            <th><a href="#theory">Theory</a></th>
+                            <th><a href="#block">Block Diagram</a></th>
+                            <th><a href="#procedure">Procedure</a></th>
+                            <th><a href="#conclusion">Conclusion</a></th>
+                            <th><a href="/sim5.html">Simulation</a></th>
+                        </table>
+                    </div>
+                    <div>
+                        <p id="aim"><h4>Aim: -</h4>To Observe Modulation and Demodulation of Quadrature Phase Shift Keying</p><br>
+                        <p id="apparatus"><h4>Apparatus: -</h4>QPSK Modulation/Demodulation Trainer Kit, DSO,Patchcords.</p><br>
+                        <p id="theory"><h4>Theory: -</h4></p>
+                        <p>The Quadrature Phase Shift Keying (QPSK) is a variation of BPSK, and it is also a Double SideBand Suppressed Carrier (DSBSC) modulation scheme, which sends two bits of digital information at a time, called as digits.Instead of the conversion of digital bits into a series of digital stream, it converts them into bit pairs. This decreases the data bit rate to half, which allows space for the other users.</p>
+                        <br>
+                        <p>The QPSK Modulator uses a bit-splitter, two multipliers with local oscillator, a 2-bit serial to parallel converter, and a summer circuit. Following is the block diagram for the same.</p>
+                        <br>
+                        <p>In Quadrature PSK (QPSK) or 4 PSK the sine carrier takes 4 phase values, separated of 90 deg. and determined by combinations of pair (Dibit) of the binary data signal. The data are coded in to Dibit by a circuit generating.</p>
+                        <br>
+                        <p>A data signal I (in phase) consisting in voltage levels corresponding to the value of the first bit of the considered pair, for duration equal to 2 bit intervals.</p>
+                        <br>
+                        <p>A data signal Q (in quadrature) consisting in levels corresponding to the value of the second bit of the pair, for duration equal to 2 bit intervals.</p>
+                        <br>
+                        <p>The block diagram of the modulator used on the module is shown in the Block Diagram No 4. Four 500 KHz sine carriers, shifted between them of 90 deg, are applied to modulator. The data (signal I &amp; Q) reach the modulator from the Dibit generator. The instantaneous value of I and Q data bit generates a symbol.</p>
+                        <br>
+                        <p>Since I and Q can take either 0 or 1 value, maximum four possible symbols can be generated (00, 01, 10, and 11). According to the symbol generated one of the four sine carrier will be selected. The relation between the symbol generated and sine carrier is shown in table.</p> <br>
+                        
+                        <div style="display: flex; justify-content: center;" class="theory-table">
+                            <table>
+                                <tr>
+                                    <th>DIBIT</th>
+                                    <th>PHASE SHIFT</th>
+                                </tr>
+                                <tr>
+                                    <td>00</td>
+                                    <td>180 deg</td>
+                                </tr>
+                                <tr>
+                                    <td>01</td>
+                                    <td>90 deg</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>270 deg</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>0 deg</td>
+                                </tr>
+                            </table>
+                        </div><br>
+                        <p style="text-align: center;"> <img src="../static/qpsk_waveform.jpg" alt="" style=" width: 100%; max-width: 500px; height: auto;"></p>
+                        <br>
+                        <p>A receiver for the QPSK signal is shown in fig. synchronous detection is required and hence it is necessary to locally regenerate the carriers. The scheme for regeneration is similar to that employed in BPSK. In that earlier case we squared the incoming the signal, extracted the waveform at twice the carrier frequency by filtering, and recovered the carrier by frequency dividing by two. In the present case, it is required that incoming signal be raised to the fourth power after which filtering recovers a waveforms at four time the carrier.</p>
+                        <br>
+                        <p>The incoming signal also applied to the sampler followed by adder and envelope detectors. Two adders add the sampled QPSK signal, sampled by the clock having different phases. At the output of adder the signals consisting the envelope corresponds to I &amp; Q bit. Envelope detector then filters the high Frequency components and recovers I &amp; Q bit. These recovered I &amp; Q bits having exactly same phase &amp; frequency compared to transmitter I &amp;Q bit. These I &amp; Q bits then applied to data decoder logic to recover the original NRZ-L data pattern</p>
+                        <br>
+                        <p id="block"><h4>Block Diagram: -</h4></p> <p style="text-align: center;"><img src="../static/qpsk_modulator.jpg" alt="" style=" width: 100%; max-width: 500px; height: auto;"></p>
+                        <p style="text-align: center;">QPSK Modulator</p>
+                        <br>
+                        <p style="text-align: center;"><img src="../static/qpsk_demodulator.jpg" alt="" style=" width: 100%; max-width: 500px; height: auto;"></p>
+                        <p style="text-align: center;">QPSK Demodulator</p> <br>
+                        <p id="procedure"><h4>Procedure: -</h4>
+                            <ol type="1" style="padding-left: 20px;">
+                                <li>Connect AC supply to the kit.</li>
+                                <li>Ensure that all faults are in normal position.</li>
+                                <li>Make connections as per the Circuit Diagram.</li>
+                                <li>Select data pattern of simulated data using switch SW1</li>
+                                <li>Connect DATA to DATA IN of the NRZ-L CODER.</li>
+                                <li>Connect NRZ-L DATA to DATA IN of the DIBIT CONVERSION</li>
+                                <li>Connect SCLOCK TO CLK IN of the DIBIT CONVERSION</li>
+                                <li>Connect the dibit data I &amp; Q bit to control input C1 and C2 of CARRIER MODULATOR respectively.</li>
+                                <li>Observe the following waveforms on CRO:
+                                    <ol type="a">
+                                        <li>SIN 1 to IN 1</li>
+                                        <li>SIN 2 to IN 2</li>
+                                        <li>SIN 3 to IN 3</li>
+                                        <li>SIN 4 to IN 4</li>
+                                    </ol>
+                                </li>
+                                <li>Connect QPSK modulated signal obtained at MOD OUT on ADCT-02 to the MOD IN of the QPSK DEMODULATOR on ADCT-03</li>
+                                <li>Connect I BIT, QBIT &amp; CLK OUT outputs of QPSK Demodulator to I BIT IN, Q BIT IN &amp; CLK IN posts of Data Decoder respectively.</li>
+                                <li>Observe various waveforms</li>
+                            </ol>
+                        </p><br>
+                        <p id="conclusion"><h4>Conclusion: -</h4>
+                            QPSK is a digital modulation technique that encodes two bits per symbol using four phase shifts. It offers higher data rates and is less susceptible to noise and interference, making it ideal for many communication applications, including wireless communication and digital satellite broadcasting. However, QPSK requires a higher signal-to-noise ratio for reliable transmission and has a more complex implementation than other modulation schemes.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <footer>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <p class="Link-head">Quick Links</p>
+                            <p class="Links"><a href="" style="color: black;">Feedback</a></p>
+                            <p class="Links"><a href="https://www.kjsieit.in/simsbackup/2021/Even/php/home.php" style="color: black;" target="_blank">Sims Portal</a></p>
+                            <p class="Links"><a href="https://kjsieit.somaiya.edu.in/en" style="color: black;" target="_blank">KJSIEIT Website</a></p>
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="Link-head">About KJ labs</p>
+                            <p class="Links"><a href="/extc.html" style="color: black;">Home</a></p>
+                            <p class="Links"><a href="https://www.somaiya.edu.in/en/about" style="color: black;" target="_blank">About Us</a></p>
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="Link-head">Contact Us</p>
+                            <p class="Links"><a
+                                    href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=info@tech.somaiya.edu"
+                                    style="color: black;" target="_blank">info.tech@somaiya.edu</a></p>
+                            <p class="Links" style="color: black; font-size: 14px;">91-22- 24061408 / 24061403</p>
+                            <p class="Links"><a
+                                    href="https://www.google.com/maps/place/K.+J.+Somaiya+Institute+of+Engineering+and+Information+Technology/@19.046058,72.8710809,15z/data=!4m5!3m4!1s0x0:0x473006136ad440dc!8m2!3d19.046058!4d72.8710809"
+                                    target="_blank" style="color: black;">Address</a></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row last">
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="https://www.somaiya.edu.in/en/privacy-policy" style="color: black;" target="_blank">Privacy Policy</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="https://www.somaiya.edu.in/en/terms-and-conditions" style="color: black;"
+                                    target="_blank">Terms and Conditions</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="https://www.somaiya.edu.in/en/disclaimer" style="color: black;"
+                                    target="_blank">Disclaimer</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="extc.html" style="color: black;" target="_blank">&copy; 2022 KJ Labs</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- <div style="padding-left: 10px; font-size: small;">
+                        <p style="text-align: center; display: flex; color: black;" >
+                            Developed By: 
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-right: 0; margin-left: 0;">Pranav Singh,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Sahil Kumar,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Aditya Khedekar,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Vedant Tadala,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Kunal Thakkar.&nbsp</a>
+                        </p>
+                    </div> -->
+                </footer>
+            </section>
+        </section>
+    </div>
+</body>
+</html>

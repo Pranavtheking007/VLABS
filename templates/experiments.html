@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DCOM | K.J. Somaiya Vlabs</title>
+
+    <!-- Bootstrap Cdn Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+
+    <!-- css file -->
+    <link rel="stylesheet" href="../static/experiments.css" />
+
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+</head>
+
+<body>
+    <div class="box">
+        <nav>
+            <ul class="list-group">
+                <li><a href="#" class="logo">
+                        <img src="../static/profile.png">
+                        <span class="nav-item">User</span>
+                    </a>
+                </li>
+                <li><a href="extc.html">
+                        <i class="fas fa-menorah"></i>
+                        <span class="nav-item">Home</span>
+                    </a>
+                </li>
+                <li><a href="extc.html">
+                        <i class="fas fa-comment"></i>
+                        <span class="nav-item">About</span>
+                    </a>
+                </li>
+                <li><a href="{{ url_for('logout') }}" class="logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="nav-item">Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <section class="main">
+            <section class="header">
+                <table style="width: 100%; font-weight: bold; color: #b7202e;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="../static/KJSIEITLogoMain (1)_preview_rev_1.png" alt="" class="somaiya" style="width: 100%; max-width: 400px; height: auto;">
+                            </td>
+                            <td>
+                                <h1 style="margin-bottom: 0px;">K.J. Somaiya Virtual Labs</h1>
+                            </td>
+                            <td>
+                                <img src="../static/SomaiyaTrust.png" alt="" class="trust" style="width: 100%; max-width: 90px; height: auto;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <div class="users">
+                <div id="carouselExampleInterval" class="carousel carousel-dark slide" data-bs-ride="carousel"
+                    data-bs-interval="6000" data-bs-pause="hover">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-wrapper">
+                                <div class="card">
+                                    <img src="../static/browser.png">
+                                    <h4 style="height: 57.6px;">Line coding techniques</h4>
+                                    <h2>Experiment no. 1</h2>
+                                    <!-- <div class="per">
+                                        <table>
+                                            <tr>
+                                                <td><span>85%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Done</td>
+                                            </tr>
+                                        </table>
+                                    </div> -->
+                                    <a
+                                        href="sim1.html"><button>Simulate</button></a>
+                                </div>
+                                <div class="card">
+                                    <img src="../static/binary.png">
+                                    <h4 style="height: 57.6px;">Binary amplitude shift keying</h4>
+                                    <h2>Experiment no. 2</h2>
+                                    <!-- <div class="per">
+                                        <table>
+                                            <tr>
+                                                <td><span>85%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Done</td>
+                                            </tr>
+                                        </table>
+                                    </div> -->
+                                    <a
+                                        href="sim2.html"><button>Simulate</button></a>
+                                </div>
+                                <div class="card">
+                                    <img src="../static/frequency.png">
+                                    <h4 style="height: 57.6px;">Binary frequency shift keying</h4>
+                                    <h2>Experiment no. 3</h2>
+                                    <!-- <div class="per">
+                                        <table>
+                                            <tr>
+                                                <td><span>94%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Done</td>
+                                            </tr>
+                                        </table>
+                                    </div> -->
+                                    <a
+                                        href="sim3.html"><button>Simulate</button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-wrapper">
+                                <div class="card">
+                                    <img src="../static/programming.png">
+                                    <h4 style="height: 57.6px;">Binary phase shift keying</h4>
+                                    <h2>Experiment no. 4</h2>
+                                    <!-- <div class="per">
+                                        <table>
+                                            <tr>
+                                                <td><span>85%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Done</td>
+                                            </tr>
+                                        </table>
+                                    </div> -->
+                                    <a
+                                        href="sim4.html"><button>Simulate</button></a>
+                                </div>
+                                <div class="card">
+                                    <img src="../static/TB_QPSK_1.webp">
+                                    <h4 style="height: 57.6px;">Binary Quadrature phase keying</h4>
+                                    <h2>Experiment no. 5</h2>
+                                    <!-- <div class="per">
+                                        <table>
+                                            <tr>
+                                                <td><span>85%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Done</td>
+                                            </tr>
+                                        </table>
+                                    </div> -->
+                                    <a
+                                        href="sim5.html"><button>Simulate</button></a>
+                                </div>
+                                <div class="card">
+                                    <img src="../static/report.png">
+                                    <h4 style="height: 57.6px;">EYE-diagram</h4>
+                                    <h2>Experiment no. 6</h2>
+                                    <!-- <div class="per">
+                                        <table>
+                                            <tr>
+                                                <td><span>94%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Done</td>
+                                            </tr>
+                                        </table>
+                                    </div> -->
+                                    <a
+                                        href="sim6.html"><button>Simulate</button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-wrapper">
+                                <div class="card">
+                                    <img src="../static/binary-code.png">
+                                    <h4 style="height: 57.6px;">Bit error rate using binary data</h4>
+                                    <h2>Experiment no. 7</h2>
+                                    <!-- <div class="per">
+                                        <table>
+                                            <tr>
+                                                <td><span>85%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Done</td>
+                                            </tr>
+                                        </table>
+                                    </div> -->
+                                    <a
+                                        href="sim7.html"><button>Simulate</button></a>
+                                </div>
+                                <div class="card">
+                                    <img src="../static/code.png">
+                                    <h4 style="height: 57.6px;">Linear block code using matlab</h4>
+                                    <h2>Experiment no. 8</h2>
+                                    <!-- <div class="per">
+                                        <table>
+                                            <tr>
+                                                <td><span>85%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Done</td>
+                                            </tr>
+                                        </table>
+                                    </div> -->
+                                    <a
+                                        href="sim8.html"><button>Simulate</button></a>
+                                </div>
+                                <div class="card">
+                                    <img src="../static/algorithm.png">
+                                    <h4 style="height: 57.6px;">Shannon Fano encoding algorithm</h4>
+                                    <h2>Experiment no. 9</h2>
+                                    <!-- <div class="per">
+                                        <table>
+                                            <tr>
+                                                <td><span>94%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Done</td>
+                                            </tr>
+                                        </table>
+                                    </div> -->
+                                    <a
+                                        href="sim9.html"><button>Simulate</button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-wrapper">
+                                <div class="card">
+                                    <img src="../static/data-flow.png">
+                                    <h4 style="height: 57.6px;">Matched filter for optimum detection</h4>
+                                    <h2>Experiment no. 10</h2>
+                                    <!-- <div class="per">
+                                        <table>
+                                            <tr>
+                                                <td><span>85%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Done</td>
+                                            </tr>
+                                        </table>
+                                    </div> -->
+                                    <a
+                                        href="sim10.html"><button>Simulate</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
+            <section class="attendance">
+                <div class="attendance-list">
+                    <h1 style="text-align: center;">Experiments List</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th style="text-align: center;">Title</th>
+                                <th style="text-align: center;padding-right: 15px;">Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="active">
+                                <td>01</td>
+                                <td style="text-align: center;">To observe different data formats: NRZ-L, NRZ-S, RZ-L, RZ-S, AMI</td>
+                                <td style="text-align: right;"><a href="/exp1.html"><button>View</button></a>
+                                </td>
+                            </tr>
+                            <tr class="active">
+                                <td>02</td>
+                                <td style="text-align: center;">Modulation and Demodulation of Binary Amplitude Shift Keying
+                                </td>
+                                <td style="text-align: right;"><a href="/exp2.html"><button>View</button></a></td>
+                            </tr>
+                            <tr class="active">
+                                <td>03</td>
+                                <td style="text-align: center;">Modulation and Demodulation of Binary Frequency Shift Keying</td>
+                                <td style="text-align: right;"><a href="/exp3.html"><button>View</button></a></td>
+                            </tr>
+                            <tr class="active">
+                                <td>04</td>
+                                <td style="text-align: center;">Modulation and Demodulation of Binary Phase Shift Keying
+                                </td>
+                                <td style="text-align: right;"><a href="/exp4.html"><button>View</button></a></td>
+                            </tr>
+                            <tr class="active">
+                                <td>05</td>
+                                <td style="text-align: center;">Modulation and Demodulation of Quadrature Phase Shift Keying</td>
+                                <td style="text-align: right;"><a href="/exp5.html"><button>View</button></a></td>
+                            </tr>
+                            <tr class="active">
+                                <td>06</td>
+                                <td style="text-align: center;">To observe the effect of signal distortion using EYE-diagram</td>
+                                <td style="text-align: right;"><a href="/exp6.html"><button>View</button></a></td>
+                            </tr>
+                            <tr class="active">
+                                <td>07</td>
+                                <td style="text-align: center;">Measurement of bit error rate using binary data</td>
+                                <td style="text-align: right;"><a href="/exp7.html"><button>View</button></a></td>
+                            </tr>
+                            <tr class="active">
+                                <td>08</td>
+                                <td style="text-align: center;">To study and perform linear block codes using matlab
+                                </td>
+                                <td style="text-align: right;"><a href="/exp8.html"><button>View</button></a></td>
+                            </tr>
+                            <tr class="active">
+                                <td>09</td>
+                                <td style="text-align: center;">Simulation of Shannon Fano Encoding algorithm</td>
+                                <td style="text-align: right;"><a href="/exp9.html"><button>View</button></a></td>
+                            </tr>
+                            <tr class="active">
+                                <td>10</td>
+                                <td style="text-align: center;">Impulse response of a matched filter for optimum detection using matlab</td>
+                                <td style="text-align: right;"><a href="/exp10.html"><button>View</button></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section>
+                <footer>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <p class="Link-head">Quick Links</p>
+                            <p class="Links"><a href="" style="color: black;">Feedback</a></p>
+                            <p class="Links"><a href="https://www.kjsieit.in/simsbackup/2021/Even/php/home.php" style="color: black;" target="_blank">Sims Portal</a></p>
+                            <p class="Links"><a href="https://kjsieit.somaiya.edu.in/en" style="color: black;" target="_blank">KJSIEIT Website</a></p>
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="Link-head">About KJ labs</p>
+                            <p class="Links"><a href="extc.html" style="color: black;">Home</a></p>
+                            <p class="Links"><a href="https://www.somaiya.edu.in/en/about" style="color: black;" target="_blank">About Us</a></p>
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="Link-head">Contact Us</p>
+                            <p class="Links"><a
+                                    href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=info@tech.somaiya.edu"
+                                    style="color: black;" target="_blank">info.tech@somaiya.edu</a></p>
+                            <p class="Links" style="color: black; font-size: 14px;">91-22- 24061408 / 24061403</p>
+                            <p class="Links"><a
+                                    href="https://www.google.com/maps/place/K.+J.+Somaiya+Institute+of+Engineering+and+Information+Technology/@19.046058,72.8710809,15z/data=!4m5!3m4!1s0x0:0x473006136ad440dc!8m2!3d19.046058!4d72.8710809"
+                                    target="_blank" style="color: black;">Address</a></p>
+                        </div>
+                    </div>
+                    <div style="padding-left: 10px; font-size: small;">
+                        <p style="display: flex; color: black; justify-content: space-around; align-items: center;" >
+                            Developed By: 
+                            <a href="https://www.linkedin.com/in/pranav-singh-9b2996217/" class="name" style="padding: auto 0; color: black; margin-right: 0; margin-left: 0;" target="_blank">Pranav Singh</a>
+                            <a href="https://www.linkedin.com/in/sahil-kumar14/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;" target="_blank">Sahil Kumar</a>
+                            <a href="https://www.linkedin.com/in/aditya-khedekar-151840245/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;" target="_blank">Aditya Khedekar</a>
+                            <a href="https://www.linkedin.com/in/vedant-tadla-397028238/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;" target="_blank">Vedant Tadala</a>
+                            <a href="https://www.linkedin.com/in/kunal-thakkar-parallelpvt/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;" target="_blank">Kunal Thakkar</a>
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="row last">
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="https://www.somaiya.edu.in/en/privacy-policy" style="color: black;" target="_blank">Privacy Policy</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="https://www.somaiya.edu.in/en/terms-and-conditions" style="color: black;"
+                                    target="_blank">Terms and Conditions</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="https://www.somaiya.edu.in/en/disclaimer" style="color: black;"
+                                    target="_blank">Disclaimer</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="extc.html" style="color: black;">&copy; 2022 KJ Labs</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- <div style="padding-left: 10px; font-size: small;">
+                        <p style="text-align: center; display: flex; color: black;" >
+                            Developed By: 
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-right: 0; margin-left: 0;">Pranav Singh,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Sahil Kumar,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Aditya Khedekar,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Vedant Tadala,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Kunal Thakkar.&nbsp</a>
+                        </p>
+                    </div> -->
+                </footer>
+            </section>
+        </section>
+    </div>
+
+</body>
+
+</html>
