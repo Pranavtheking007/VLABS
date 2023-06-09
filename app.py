@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, session, redirect
 import pyrebase
 import ASK
 import PSK
+import BFSK
 #Setup
 app = Flask(__name__)
 
@@ -159,8 +160,24 @@ def sim3():
 @app.route('/sim3.html',methods=["GET","POST"])
 def sim3_1():
      if request.method == "POST":
-          pass
+        User_input = request.form.get('user_input')
+        Samples = float(request.form['Sample'])
+        Bit_Rate = float(request.form['Bit_Rate'])
+        frequency_1 = float(request.form['frequency_1'])
+        frequency_2 = float(request.form['frequency_2'])
+        Duration = float(request.form['Duration'])
+        Amplitude = float(request.form['Amplitude'])
+        Pulse_Code = float(request.form['Pulse Code'])
 
+        print('___________________________________________________________________')
+        print(User_input)
+        print('___________________________________________________________________')
+        print('\n')
+        print('\n')
+
+        BFSK.BFSK_PLOT1(User_input,Samples,Bit_Rate,frequency_1,frequency_2,Duration,Amplitude,Pulse_Code),BFSK.BFSK_PLOT2(User_input,Samples,Bit_Rate,frequency_1,frequency_2,Duration,Amplitude,Pulse_Code)
+
+        return render_template('sim3.html')
 
   
 #experiments page ---------> expt4 ---------->sim4 --------> form entry -------->output/results
