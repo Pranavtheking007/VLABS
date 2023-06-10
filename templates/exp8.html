@@ -85,31 +85,49 @@
                         <p id="theory"><h4>Code: -</h4>
                             <pre>
                                 <code>
-                                    clc
-                                    clear all
-                                    %input generator matrix
-                                    g=input(&#39;enter the generator matrix:&#39;)
-                                    disp(&#39;g=&#39;)
-                                    disp(&#39;order of the linear block code for given generator matrix is:&#39;)
-                                    [n,k]=size(transpose(g))
-                                    for i=1:2^k
-                                    for j=k:-1:1
-                                    if rem(i-1,2^(-j+k+1))&gt;=2^(-j+k)
-                                    u(i,j)=1;
-                                    else
-                                    u(i,j)=0;
-                                    end
-                                    end
-                                    end
-                                    u;
-                                    disp(&#39;the possible code words are :&#39;)
-                                    c=rem(u*g,2)
-                                    disp(&#39;the minimum hamming distance dmin for given block code is=&#39;)
-                                    d_min=min(sum((c(2:2^k,:))&#39;))
-                                    disp(&#39;no. of errors detected&#39;)
-                                    s=d_min-1
-                                    disp(&#39;no of errors that can be corrected&#39;)
-                                    t=(d_min-1)/2
+clear;  % Clear the workspace
+
+% Input generator matrix
+g = input('Enter the generator matrix: ');
+disp('g = ');
+disp(g);
+
+% Order of the linear block code for the given generator matrix
+[n, k] = size(g);
+disp('Order of the linear block code for given generator matrix is:');
+disp([n, k]);
+
+% Generate possible codewords
+u = zeros(2^k, k);
+for i = 1:2^k
+    for j = k:-1:1
+        if rem(i-1, 2^(-j+k+1)) >= 2^(-j+k)
+            u(i, j) = 1;
+        else
+            u(i, j) = 0;
+        end
+    end
+end
+
+disp('The possible codewords are:');
+c = mod(u * transpose(g), 2);
+disp(c);
+
+% Calculate the minimum Hamming distance (dmin) for the given block code
+d_min = min(sum(c(2:2^k, :), 2));
+disp('The minimum Hamming distance dmin for given block code is:');
+disp(d_min);
+
+% Calculate the number of errors detected (s) and the number of errors that can be corrected (t)
+s = d_min - 1;
+t = (d_min - 1) / 2;
+disp('Number of errors detected:');
+disp(s);
+disp('Number of errors that can be corrected:');
+disp(t);
+
+                                    
+                                    
                                 </code>
                             </pre>
                         </p>
