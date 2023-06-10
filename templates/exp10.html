@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KJ VLABS-Experiment 9</title>
+    <title>KJ VLABS-Experiment 10</title>
 
     <!-- Bootstrap Cdn Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
 
     <!-- css file -->
-    <link rel="stylesheet" href="../static/exp9.css">
+    <link rel="stylesheet" href="../static/exp10.css">
 
     <!-- Font Awesome Cdn Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
@@ -65,7 +65,7 @@
             </section>
             <section class="attendance">
                 <div class="attendance-list" style="width: auto;">
-                    <h2>Experiment 9 - Shannon Fano Encoding Algorithm</h2>
+                    <h2>Experiment 10 - Impulse response of a matched filter</h2>
                     <div class="table">
                         <table>
                             <th><a href="#aim">Aim</a></th>
@@ -73,114 +73,170 @@
                             <th><a href="#diagram">Diagram</a></th>
                             <th><a href="#theory">Code</a></th>
                             <th><a href="#conclusion">Conclusion</a></th>
-                            <th><a href="/sim9.html">Simulation</a></th>
+                            <th><a href="/sim10.html">Simulation</a></th>
                         </table>
                     </div>
                     <div>
-                        <p id="aim"><h4>Aim: -</h4>To Observe Shannon Fano Encoding Algorithm</p><br>
-                        <p id="apparatus"><h4>Apparatus: -</h4>matlab</p><br>
+                        <p id="aim"><h4>Aim: -</h4>Impulse response of a matched filter for optimum detection using matlab</p><br>
+                        <p id="apparatus"><h4>Apparatus: -</h4>Octave</p><br>
                         <p id="diagram"> <h4>Diagram: -</h4>
-                            <p style="text-align: center;"><img src="../static/probstep4.png" alt="" style="width: 100%; max-width: 500px; height: auto;"></p>
+                            <p style="text-align: center;">
+                                <img src="../static/10-1img.png" alt="" style="width: 100%; max-width: 500px; height: auto;">
+                                <img src="../static/10-2img.png" alt="" style="width: 100%; max-width: 500px; height: auto;">
+                                <img src="../static/10-3.png" alt="" style="width: 100%; max-width: 500px; height: auto;">
+                            </p>
                         </p> <br>
                         <p id="theory"><h4>Code: -</h4>
-                            <pre>
+                            <ul>
+                                <li>Create a linear FM waveform with a duration of 0.1 milliseconds, a sweep bandwidth of 100 kHz, and a pulse repetition frequency of 5 kHz. Add noise to the linear FM pulse and filter the noisy signal using a matched filter. This example applies a matched filter with and without spectrum weighting.</li>
+                                <li>Specify the waveform.</li>
+                                <li>Create a matched filter with no spectrum weighting, and a matched filter that uses a Taylor window for spectrum weighting.</li>
+                                <li>Create the signal and add noise.</li>
+                                <li>Filter the noisy signal separately with each of the filters.</li>
+                            </ul>
+                            <pre> 
                                 <code>
-                                    %Shannon-Fano Encoding
-                                    clc;
-                                    clear all;
-                                    close all;
-                                    disp(&#39;Enter the probabilities:&#39;);
-                                    %ss=[0.25 0.125 0.5 0.125];
-                                    ss=[0.25 0.125 0.0625 0.0625 0.0625 0.25 0.0625 0.125];
-                                    %ss=[0.4 0.2 0.12 0.08 0.08 0.08 0.04]
-                                    %ss=[0.4 0.3 0.2 0.1]
-                                    %ss=[0.45 0.15 0.1 0.1 0.08 0.08 0.04]
-                                    %ss=[0.2 0.15 0.03 0.05 0.45 0.08 0.04]
-                                    %outputs = string of codewords,average codeword length
-                                    ss=ss./sum(ss); %if occurrences are inputted, probabilities are gained
-                                    ss=sort(ss,&#39;descend&#39;);  %the probabilities are sorted in descending order
-                                    %siling=ceil(log2(1/ss(1))); %initial length is computed
-                                    siling=log2(1/ss(1)); %initial length is computed
-                                    siling=round(siling,1,&#39;significant&#39;);
-                                    sf=0;
-                                    fano=0;
-                                    %initializations for Pk
-                                    n=1;Hx=0; %initializations for entropy H(X)
-                                    for i=1:length(ss)
-                                       Hx=Hx+ ss(i)*log2(1/ss(i)); %solving for entropy
-                                    end
+                                    pkg load signal
 
-                                    for k=1:length(ss)
-                                    info(k)=-(log2(ss(k))); %Information
-                                    end
-                                    for j=1:length(ss)-1
-                                       fano=fano+ss(j);
-                                       sf=[sf 0]+[zeros(1,j) fano]; %solving for Information for every codeword
-                                       siling=[siling 0]+[zeros(1,j)
-                                    ceil(log2(1/ss(j+1)))]; %solving for length every codeword
-                                    end
-                                    for r=1:length(sf)
-                                        esf=sf(r);
-                                        for p=1:siling(r)   
-                                            esf=mod(esf,1)*2;
-                                            h(p)=esf-mod(esf,1); %converting Pk into a binary number      
-                                        end
-                                        hh(r)=h(1)*10^(siling(r)-1); %initializtion for making the binary a whole number
-                                    for t=2:siling(r)
-                                            hh(r)=hh(r)+h(t)*10^(siling(r)-t);    %making the binary
-                                    a whole number
-                                        end    %e.g. 0.1101 ==&gt; 1101
-                                    end
+                                    % Waveform parameters
+                                    pulse_width = 1e-4;          % Pulse width in seconds
+                                    prf = 5e3;                   % Pulse repetition frequency in Hz
+                                    sample_rate = 1e6;           % Sample rate in Hz
+                                    num_pulses = 1;              % Number of pulses
+                                    sweep_bandwidth = 1e5;       % Sweep bandwidth in Hz
 
-                                    c={&#39;0&#39;,&#39;1&#39;};
-                                    disp(&#39;Codeword&#39;);
+                                    % Generate time vector
+                                    t = 0:1/sample_rate:(pulse_width - 1/sample_rate);
+                                    t = repmat(t, 1, num_pulses);
 
-                                    for i=1:length(hh)
-                                        u=1;   %converting the codes into a string
-                                       for t=siling(i):-1:1
-                                           f=floor(hh(i)/10^(t-1));               %1001 ==&gt; 1 (getting the first highest unit of a number)
-                                           hh(i)=mod(hh(i),10^(t-1));             %1001
-                                    ==&gt;001(eliminating the first highest unit of a number)
-                                    if f==1
-                                               if u==1
-                                                    d=c{2};    %conversion part (num(1001) to str(1001)) 
-                                               else
-                                                    d=[d c{2}];
-                                               end
-                                           else
-                                    if u==1
-                                                    d=c{1};
-                                               else
-                                                    d=[d c{1}];
-                                               end
-                                           end
-                                          
-                                           codex{i,:}={d};
-                                           u=u+1;
-                                    end
-                                       disp([d])
+                                    % Generate linear frequency modulated (LFM) waveform
+                                    fm_modulation = chirp(t, 0, pulse_width, sweep_bandwidth);
 
-                                    end
+                                    % Add noise to the waveform
+                                    x = fm_modulation + 0.5*(randn(size(fm_modulation)) + 1j*randn(size(fm_modulation)));
 
-                                    tao=siling(1)*ss(1); %initialization for codeword length
-                                    for u=1:length(ss)-1 %computing for codeword length
-                                       tao=tao+siling(u+1)*ss(u+1);
-                                    end
-                                    T=tao/n; %computing for average codeword length
-                                    B=[flipud(rot90(ss)),flipud(rot90(siling)),flipud(rot90(info))];
-                                    disp([&#39;Probability&#39;,&#39;   Length&#39;,&#39;   Information&#39;])
-                                    disp(B)
-                                    disp([&#39;Entropy H(X) = &#39;,num2str(Hx),&#39;bits/symbol&#39;])
-                                    disp([&#39;Average length,L = &#39;,num2str(T),&#39;bits/symbol&#39;])
-                                    eff=((Hx/T)*100); %Coding efficiency
-                                    disp([&#39;Efficiency=&#39;,num2str(eff),&#39;%&#39;])
-                                    redu=100-eff;   %Redundancy
-                                    disp([&#39;Redundancy=&#39;,num2str(redu),&#39;%&#39;])
+                                    % Generate matched filter coefficients
+                                    matched_filter = conj(flip(fm_modulation));
+
+                                    % Apply matched filter to the noisy waveform
+                                    y = conv(x, matched_filter, 'same');
+
+                                    % Plot the input signal
+                                    figure;
+                                    subplot(2,1,1)
+                                    plot(t, real(fm_modulation))
+                                    title('Input Signal')
+                                    grid on
+                                    ylabel('Amplitude')
+
+                                    % Plot the input signal with noise
+                                    subplot(2,1,2)
+                                    plot(t, real(x))
+                                    title('Input Signal + Noise')
+                                    grid on
+                                    xlabel('Time (sec)')
+                                    ylabel('Amplitude')
+
+                                    % Plot the matched filter output
+                                    figure;
+                                    plot(t, abs(y), 'b--')
+                                    title('Matched Filter Output')
+                                    grid on
+                                    ylabel('Magnitude')
+                                    xlabel('Seconds')
+                                    legend('No Spectrum Weighting')
+
+
+                                </code>
+                            </pre>
+                            <h4>Matched Filtering to Improve SNR for Target Detection</h4>
+                            <ul>
+                                <li>This example shows how to improve the SNR by performing matched filtering.</li>
+                                <li>Place an isotropic antenna element at the global origin (0;0;0). Then, place a target with a nonfluctuating RCS of 1 square meter approximately 7 km from the transmitter at (5000;5000;10). Set the operating (carrier) frequency to 10 GHz. To simulate a monostatic radar, set the InUseOutputPort property on the transmitter to true. Calculate the range and angle from the transmitter to the target.</li>
+                                <li>Create a rectangular pulse waveform 25 μs in duration with a PRF of 10 kHz. Use a single pulse for this example. Determine the maximum unambiguous range for the given PRF. Use the radar equation to determine the peak power required to detect a target. This target has an RCS of 1 square meter at the maximum unambiguous range for the transmitter operating frequency and gain. The SNR is based on a desired false-alarm rate of 1e-6 for a noncoherent detector.</li>
+                                <li>Set the peak transmit power to the output value from the radar equation.</li>
+                                <li>Create radiator and collector objects that operate at 10 GHz. Create a free space path for the propagation of the pulse to and from the target. Then, create a receiver and a matched filter for the rectangular waveform.</li>
+                                <li>After you create all the objects that define your model, you can propagate the pulse to and from the target. Collect the echo at the receiver, and implement the matched filter to improve the SNR.</li>
+                                <li>Generate waveform.</li>
+                                <li>Transmit waveform.</li>
+                                <li>Radiate pulse toward the target.</li>
+                                <li>Propagate pulse toward the target.</li>
+                                <li>Reflect it off the target.</li>
+                                <li>Propagate the pulse back to transmitter.</li>
+                                <li>Collect the echo.</li>
+                                <li>Receive target echo.</li>
+                                <li>Get group delay of matched filter.</li>
+                                <li>The group delay is constant.</li>
+                                <li>Shift the matched filter output.</li>
+                            </ul>
+                            <pre> 
+                                <code>
+                                    pkg load signal
+
+                                    % Parameters
+                                    fc = 10e9;  % Carrier frequency (in Hz)
+                                    c = 299792458;  % Speed of light (in m/s)
+                                    pulseWidth = 25e-6;  % Pulse width (in seconds)
+                                    prf = 10e3;  % Pulse repetition frequency (in Hz)
+                                    numPulses = 1;  % Number of pulses
+                                    targetRange = 5000;  % Target range (in meters)
+                                    
+                                    % Create pulse waveform
+                                    numSamples = round(pulseWidth * prf);
+                                    waveform = ones(numSamples, 1);
+                                    
+                                    % Calculate maximum unambiguous range
+                                    maxRange = c / (2 * prf);
+                                    
+                                    % Calculate transmitted power
+                                    Pt = (4 * pi)^3 * (abs(targetRange)^4) * 1 / (pulseWidth * numPulses);
+                                    Boltzmann = 1.380649e-23;  % Boltzmann constant (in J/K)
+                                    Ts = 290;  % System temperature (in K)
+                                    noisePower = 10 * log10(Boltzmann * Ts) - db2pow(Pt);
+                                    Pt = db2pow(Pt);  % Convert to linear scale
+                                    
+                                    % Generate received signal
+                                    txSignal = sqrt(Pt) * waveform;  % Transmitted signal
+                                    targetSignal = sqrt(1) * exp(1i * 4 * pi * fc * (2 * targetRange / c));  % Target signal
+                                    
+                                    % Add noise to the received signal
+                                    SNR = pow2db(Pt / noisePower);
+                                    noise = wgn(numSamples, 1, noisePower, 'complex');
+                                    rxSignal = txSignal + targetSignal + noise;
+                                    
+                                    % Matched filtering
+                                    matchedFilter = flipud(conj(waveform));
+                                    mfSignal = conv(rxSignal, matchedFilter, 'same');
+                                    
+                                    % Plotting
+                                    time = (0:numSamples-1) / prf;
+                                    range = c * time / 2;
+                                    figure
+                                    subplot(2, 1, 1)
+                                    plot(range, abs(rxSignal))
+                                    hold on
+                                    plot([targetRange, targetRange], [0 max(abs(rxSignal))], 'r')
+                                    title('Received Signal')
+                                    xlabel('Range (m)')
+                                    ylabel('Amplitude')
+                                    legend('Received Signal', 'Target Range')
+                                    hold off
+                                    
+                                    subplot(2, 1, 2)
+                                    plot(range, abs(mfSignal))
+                                    hold on
+                                    plot([targetRange, targetRange], [0 max(abs(mfSignal))], 'r')
+                                    title('Matched Filtered Signal')
+                                    xlabel('Range (m)')
+                                    ylabel('Amplitude')
+                                    legend('Matched Filtered Signal', 'Target Range')
+                                    hold off
+                                    
                                 </code>
                             </pre>
                         </p>
                         <p id="conclusion"><h4>Conclusion: -</h4>
-                            Thus The algorithm produces fairly efficient variable-length encodings; when the two smaller sets produced by a partitioning are in fact of equal probability, the one bit of information used to distinguish them is used most efficiently.
+                            The impulse response of a matched filter is crucial for optimizing signal processing and communications. It is designed to maximize the signal-to-noise ratio (SNR) by correlating the filter input with a reference signal. The impulse response represents the ideal filter response that enhances the desired signal while suppressing noise and interference. It determines the filter's frequency response and its ability to shape transmitted pulses. By using the impulse response for signal detection and synchronization, the presence of the desired signal can be detected accurately. Overall, the impulse response of a matched filter plays a vital role in improving the performance of communication systems.
                         </p>
                     </div>
                 </div>
