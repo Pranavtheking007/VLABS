@@ -66,7 +66,7 @@ nav:hover {
     font-weight: bold;
     padding-left: 15px;
     font-size: 18px;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 a {
@@ -108,7 +108,7 @@ nav .fas {
 /*Attendance List serction  */
 .attendance {
     margin-top: 20px;
-    text-transform: capitalize;
+    text-transform: none;
 }
 
 .attendance-list {

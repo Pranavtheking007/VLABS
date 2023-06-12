@@ -216,7 +216,7 @@ a:hover i {
 /*Attendance List serction  */
 .attendance {
     margin-top: 20px;
-    text-transform: capitalize;
+    text-transform: none;
 }
 
 .attendance-list {

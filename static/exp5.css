@@ -67,7 +67,7 @@ nav:hover {
     font-weight: bold;
     padding-left: 15px;
     font-size: 18px;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 a {
@@ -165,7 +165,7 @@ a:hover i {
 }
 
 .users .card h4 {
-    text-transform: uppercase;
+    text-transform: none;
     margin-top: 5px;
     text-align: center;
 }
@@ -174,7 +174,7 @@ a:hover i {
     font-size: 12px;
     margin-top: 5px;
     margin-bottom: 15px;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .users table {
@@ -216,7 +216,7 @@ a:hover i {
 /*Attendance List serction  */
 .attendance {
     margin-top: 20px;
-    text-transform: capitalize;
+    text-transform: none;
 }
 
 .attendance-list {

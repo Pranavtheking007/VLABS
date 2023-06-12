@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KJ VLABS-Experiment 10</title>
+
+    <!-- Bootstrap Cdn Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+
+    <!-- css file -->
+    <link rel="stylesheet" href="../static/exp10.css">
+
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+    <div class="box">
+        <nav>
+            <ul class="list-group">
+                <li><a href="#" class="logo">
+                        <img src="../static/profile.png">
+                        <span class="nav-item">User</span>
+                    </a></li>
+                <li><a href="/extc.html">
+                        <i class="fas fa-menorah"></i>
+                        <span class="nav-item">Home</span>
+                    </a></li>
+                <li><a href="extc.html">
+                        <i class="fas fa-comment"></i>
+                        <span class="nav-item">About</span>
+                    </a></li>
+                <li><a href="/experiments.html">
+                        <i class="fas fa-chart-bar"></i>
+                        <span class="nav-item">Experiments</span>
+                    </a></li>
+                <li><a href="{{ url_for('logout') }}" class="logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="nav-item">Log out</span>
+                    </a></li>
+            </ul>
+        </nav>
+        <section class="main">
+            <section class="header">
+                <table style="width: 100%; font-weight: bold; color: #b7202e;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="../static/KJSIEITLogoMain (1)_preview_rev_1.png" alt="" class="somaiya" style="width: 100%; max-width: 400px; height: auto;">
+                            </td>
+                            <td>
+                                <h1 style="margin-bottom: 0px ;">K.J. Somaiya Virtual Labs</h1>
+                            </td>
+                            <td>
+                                <img src="../static/SomaiyaTrust.png" alt="" class="trust" style="width: 100%; max-width: 90px; height: auto;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="attendance">
+                <div class="attendance-list" style="width: auto;">
+                    <h2>Experiment 10 - Impulse response of a matched filter</h2>
+                    <div class="table">
+                        <table>
+                            <th><a href="#aim">Aim</a></th>
+                            <th><a href="#apparatus">Apparatus</a></th>
+                            <th><a href="#diagram">Diagram</a></th>
+                            <th><a href="#theory">Code</a></th>
+                            <th><a href="#conclusion">Conclusion</a></th>
+                            <th><a href="/sim10.html">Simulation</a></th>
+                        </table>
+                    </div>
+                    <div>
+                        <p id="aim"><h4>Aim: -</h4>Impulse response of a matched filter for optimum detection using matlab</p><br>
+                        <p id="apparatus"><h4>Apparatus: -</h4>Octave</p><br>
+                        <p id="diagram"> <h4>Diagram: -</h4>
+                            <p style="text-align: center;">
+                                <img src="../static/10-1img.png" alt="" style="width: 100%; max-width: 500px; height: auto;">
+                                <img src="../static/10-2img.png" alt="" style="width: 100%; max-width: 500px; height: auto;">
+                                <img src="../static/10-3.png" alt="" style="width: 100%; max-width: 500px; height: auto;">
+                            </p>
+                        </p> <br>
+                        <p id="theory"><h4>Code: -</h4>
+                            <ul>
+                                <li>Create a linear FM waveform with a duration of 0.1 milliseconds, a sweep bandwidth of 100 kHz, and a pulse repetition frequency of 5 kHz. Add noise to the linear FM pulse and filter the noisy signal using a matched filter. This example applies a matched filter with and without spectrum weighting.</li>
+                                <li>Specify the waveform.</li>
+                                <li>Create a matched filter with no spectrum weighting, and a matched filter that uses a Taylor window for spectrum weighting.</li>
+                                <li>Create the signal and add noise.</li>
+                                <li>Filter the noisy signal separately with each of the filters.</li>
+                            </ul>
+                            <pre> 
+                                <code>
+                                    pkg load signal
+
+                                    % Waveform parameters
+                                    pulse_width = 1e-4;          % Pulse width in seconds
+                                    prf = 5e3;                   % Pulse repetition frequency in Hz
+                                    sample_rate = 1e6;           % Sample rate in Hz
+                                    num_pulses = 1;              % Number of pulses
+                                    sweep_bandwidth = 1e5;       % Sweep bandwidth in Hz
+
+                                    % Generate time vector
+                                    t = 0:1/sample_rate:(pulse_width - 1/sample_rate);
+                                    t = repmat(t, 1, num_pulses);
+
+                                    % Generate linear frequency modulated (LFM) waveform
+                                    fm_modulation = chirp(t, 0, pulse_width, sweep_bandwidth);
+
+                                    % Add noise to the waveform
+                                    x = fm_modulation + 0.5*(randn(size(fm_modulation)) + 1j*randn(size(fm_modulation)));
+
+                                    % Generate matched filter coefficients
+                                    matched_filter = conj(flip(fm_modulation));
+
+                                    % Apply matched filter to the noisy waveform
+                                    y = conv(x, matched_filter, 'same');
+
+                                    % Plot the input signal
+                                    figure;
+                                    subplot(2,1,1)
+                                    plot(t, real(fm_modulation))
+                                    title('Input Signal')
+                                    grid on
+                                    ylabel('Amplitude')
+
+                                    % Plot the input signal with noise
+                                    subplot(2,1,2)
+                                    plot(t, real(x))
+                                    title('Input Signal + Noise')
+                                    grid on
+                                    xlabel('Time (sec)')
+                                    ylabel('Amplitude')
+
+                                    % Plot the matched filter output
+                                    figure;
+                                    plot(t, abs(y), 'b--')
+                                    title('Matched Filter Output')
+                                    grid on
+                                    ylabel('Magnitude')
+                                    xlabel('Seconds')
+                                    legend('No Spectrum Weighting')
+
+
+                                </code>
+                            </pre>
+                            <h4>Matched Filtering to Improve SNR for Target Detection</h4>
+                            <ul>
+                                <li>This example shows how to improve the SNR by performing matched filtering.</li>
+                                <li>Place an isotropic antenna element at the global origin (0;0;0). Then, place a target with a nonfluctuating RCS of 1 square meter approximately 7 km from the transmitter at (5000;5000;10). Set the operating (carrier) frequency to 10 GHz. To simulate a monostatic radar, set the InUseOutputPort property on the transmitter to true. Calculate the range and angle from the transmitter to the target.</li>
+                                <li>Create a rectangular pulse waveform 25 μs in duration with a PRF of 10 kHz. Use a single pulse for this example. Determine the maximum unambiguous range for the given PRF. Use the radar equation to determine the peak power required to detect a target. This target has an RCS of 1 square meter at the maximum unambiguous range for the transmitter operating frequency and gain. The SNR is based on a desired false-alarm rate of 1e-6 for a noncoherent detector.</li>
+                                <li>Set the peak transmit power to the output value from the radar equation.</li>
+                                <li>Create radiator and collector objects that operate at 10 GHz. Create a free space path for the propagation of the pulse to and from the target. Then, create a receiver and a matched filter for the rectangular waveform.</li>
+                                <li>After you create all the objects that define your model, you can propagate the pulse to and from the target. Collect the echo at the receiver, and implement the matched filter to improve the SNR.</li>
+                                <li>Generate waveform.</li>
+                                <li>Transmit waveform.</li>
+                                <li>Radiate pulse toward the target.</li>
+                                <li>Propagate pulse toward the target.</li>
+                                <li>Reflect it off the target.</li>
+                                <li>Propagate the pulse back to transmitter.</li>
+                                <li>Collect the echo.</li>
+                                <li>Receive target echo.</li>
+                                <li>Get group delay of matched filter.</li>
+                                <li>The group delay is constant.</li>
+                                <li>Shift the matched filter output.</li>
+                            </ul>
+                            <pre> 
+                                <code>
+                                    pkg load signal
+
+                                    % Parameters
+                                    fc = 10e9;  % Carrier frequency (in Hz)
+                                    c = 299792458;  % Speed of light (in m/s)
+                                    pulseWidth = 25e-6;  % Pulse width (in seconds)
+                                    prf = 10e3;  % Pulse repetition frequency (in Hz)
+                                    numPulses = 1;  % Number of pulses
+                                    targetRange = 5000;  % Target range (in meters)
+                                    
+                                    % Create pulse waveform
+                                    numSamples = round(pulseWidth * prf);
+                                    waveform = ones(numSamples, 1);
+                                    
+                                    % Calculate maximum unambiguous range
+                                    maxRange = c / (2 * prf);
+                                    
+                                    % Calculate transmitted power
+                                    Pt = (4 * pi)^3 * (abs(targetRange)^4) * 1 / (pulseWidth * numPulses);
+                                    Boltzmann = 1.380649e-23;  % Boltzmann constant (in J/K)
+                                    Ts = 290;  % System temperature (in K)
+                                    noisePower = 10 * log10(Boltzmann * Ts) - db2pow(Pt);
+                                    Pt = db2pow(Pt);  % Convert to linear scale
+                                    
+                                    % Generate received signal
+                                    txSignal = sqrt(Pt) * waveform;  % Transmitted signal
+                                    targetSignal = sqrt(1) * exp(1i * 4 * pi * fc * (2 * targetRange / c));  % Target signal
+                                    
+                                    % Add noise to the received signal
+                                    SNR = pow2db(Pt / noisePower);
+                                    noise = wgn(numSamples, 1, noisePower, 'complex');
+                                    rxSignal = txSignal + targetSignal + noise;
+                                    
+                                    % Matched filtering
+                                    matchedFilter = flipud(conj(waveform));
+                                    mfSignal = conv(rxSignal, matchedFilter, 'same');
+                                    
+                                    % Plotting
+                                    time = (0:numSamples-1) / prf;
+                                    range = c * time / 2;
+                                    figure
+                                    subplot(2, 1, 1)
+                                    plot(range, abs(rxSignal))
+                                    hold on
+                                    plot([targetRange, targetRange], [0 max(abs(rxSignal))], 'r')
+                                    title('Received Signal')
+                                    xlabel('Range (m)')
+                                    ylabel('Amplitude')
+                                    legend('Received Signal', 'Target Range')
+                                    hold off
+                                    
+                                    subplot(2, 1, 2)
+                                    plot(range, abs(mfSignal))
+                                    hold on
+                                    plot([targetRange, targetRange], [0 max(abs(mfSignal))], 'r')
+                                    title('Matched Filtered Signal')
+                                    xlabel('Range (m)')
+                                    ylabel('Amplitude')
+                                    legend('Matched Filtered Signal', 'Target Range')
+                                    hold off
+                                    
+                                </code>
+                            </pre>
+                        </p>
+                        <p id="conclusion"><h4>Conclusion: -</h4>
+                            The impulse response of a matched filter is crucial for optimizing signal processing and communications. It is designed to maximize the signal-to-noise ratio (SNR) by correlating the filter input with a reference signal. The impulse response represents the ideal filter response that enhances the desired signal while suppressing noise and interference. It determines the filter's frequency response and its ability to shape transmitted pulses. By using the impulse response for signal detection and synchronization, the presence of the desired signal can be detected accurately. Overall, the impulse response of a matched filter plays a vital role in improving the performance of communication systems.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <footer>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <p class="Link-head">Quick Links</p>
+                            <p class="Links"><a href="" style="color: black;">Feedback</a></p>
+                            <p class="Links"><a href="https://www.kjsieit.in/simsbackup/2021/Even/php/home.php" style="color: black;" target="_blank">Sims Portal</a></p>
+                            <p class="Links"><a href="https://kjsieit.somaiya.edu.in/en" style="color: black;" target="_blank">KJSIEIT Website</a></p>
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="Link-head">About KJ labs</p>
+                            <p class="Links"><a href="/extc.html" style="color: black;">Home</a></p>
+                            <p class="Links"><a href="" style="color: black;" target="_blank">About Us</a></p>
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="Link-head">Contact Us</p>
+                            <p class="Links"><a
+                                    href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=info@tech.somaiya.edu"
+                                    style="color: black;" target="_blank">info.tech@somaiya.edu</a></p>
+                            <p class="Links" style="color: black; font-size: 14px;">91-22- 24061408 / 24061403</p>
+                            <p class="Links"><a
+                                    href="https://www.google.com/maps/place/K.+J.+Somaiya+Institute+of+Engineering+and+Information+Technology/@19.046058,72.8710809,15z/data=!4m5!3m4!1s0x0:0x473006136ad440dc!8m2!3d19.046058!4d72.8710809"
+                                    target="_blank" style="color: black;">Address</a></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row last">
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="https://www.somaiya.edu.in/en/privacy-policy" style="color: black;" target="_blank">Privacy Policy</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="https://www.somaiya.edu.in/en/terms-and-conditions" style="color: black;"
+                                    target="_blank">Terms and Conditions</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="https://www.somaiya.edu.in/en/disclaimer" style="color: black;"
+                                    target="_blank">Disclaimer</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <a href="extc.html" style="color: black;" target="_blank">&copy; 2022 KJ Labs</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- <div style="padding-left: 10px; font-size: small;">
+                        <p style="text-align: center; display: flex; color: black;" >
+                            Developed By: 
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-right: 0; margin-left: 0;">Pranav Singh,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Sahil Kumar,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Aditya Khedekar,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Vedant Tadala,&nbsp</a>
+                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Kunal Thakkar.&nbsp</a>
+                        </p>
+                    </div> -->
+                </footer>
+            </section>
+        </section>
+    </div>
+</body>
+</html>
