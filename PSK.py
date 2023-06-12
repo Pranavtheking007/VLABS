@@ -50,7 +50,6 @@ def PSK_Simulate2(A,f1,F2,User_Input):
         print('Binary')
         # Binary data inputs
         binary_data=[]
-        F2 = int(F2)
         print('******************************')
         print('F2',F2)
         s = str(F2)
@@ -131,7 +130,6 @@ def PSK_Simulate3(A,f1,F2,User_Input):
     if User_Input == 'Binary':
         # Binary data inputs
         binary_data = []
-        F2 = int(F2)
         s = str(F2)
         for i in range(0, len(s)):
             binary_data.append(int(s[i]))
