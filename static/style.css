@@ -47,7 +47,7 @@ body:before {
 	padding: 0 0 20px;
 	color: #fff;
 	text-align: center;
-	text-transform: uppercase;
+	text-transform: none;
 }
 
 .contact-form p {
