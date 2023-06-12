@@ -85,97 +85,90 @@
                         <p id="theory"><h4>Code: -</h4>
                             <pre>
                                 <code>
-                                    %Shannon-Fano Encoding
                                     clc;
-                                    clear all;
-                                    close all;
-                                    disp(&#39;Enter the probabilities:&#39;);
-                                    %ss=[0.25 0.125 0.5 0.125];
-                                    ss=[0.25 0.125 0.0625 0.0625 0.0625 0.25 0.0625 0.125];
-                                    %ss=[0.4 0.2 0.12 0.08 0.08 0.08 0.04]
-                                    %ss=[0.4 0.3 0.2 0.1]
-                                    %ss=[0.45 0.15 0.1 0.1 0.08 0.08 0.04]
-                                    %ss=[0.2 0.15 0.03 0.05 0.45 0.08 0.04]
-                                    %outputs = string of codewords,average codeword length
-                                    ss=ss./sum(ss); %if occurrences are inputted, probabilities are gained
-                                    ss=sort(ss,&#39;descend&#39;);  %the probabilities are sorted in descending order
-                                    %siling=ceil(log2(1/ss(1))); %initial length is computed
-                                    siling=log2(1/ss(1)); %initial length is computed
-                                    siling=round(siling,1,&#39;significant&#39;);
-                                    sf=0;
-                                    fano=0;
-                                    %initializations for Pk
-                                    n=1;Hx=0; %initializations for entropy H(X)
-                                    for i=1:length(ss)
-                                       Hx=Hx+ ss(i)*log2(1/ss(i)); %solving for entropy
+                                    clear all;
+                                    close all;
+                                    disp('Enter the probabilities:');
+                                    ss = [0.25 0.125 0.0625 0.0625 0.0625 0.25 0.0625 0.125];
+                                    ss = ss ./ sum(ss);
+                                    ss = sort(ss, 'descend');
+                                    siling = log2(1 ./ ss(1));
+                                    siling = ceil(siling * 10) / 10; % Round to one decimal place
+                                    sf = 0;
+                                    fano = 0;
+                                    n = 1;
+                                    Hx = 0;
+                                    
+                                    for i = 1:length(ss)
+                                        Hx = Hx + ss(i) * log2(1 / ss(i));
                                     end
-
-                                    for k=1:length(ss)
-                                    info(k)=-(log2(ss(k))); %Information
+                                    
+                                    for k = 1:length(ss)
+                                        info(k) = -(log2(ss(k)));
                                     end
-                                    for j=1:length(ss)-1
-                                       fano=fano+ss(j);
-                                       sf=[sf 0]+[zeros(1,j) fano]; %solving for Information for every codeword
-                                       siling=[siling 0]+[zeros(1,j)
-                                    ceil(log2(1/ss(j+1)))]; %solving for length every codeword
+                                    
+                                    for j = 1:length(ss) - 1
+                                        fano = fano + ss(j);
+                                        sf = [sf, 0] + [zeros(1, j), fano];
+                                        siling = [siling, 0] + [zeros(1, j), ceil(log2(1 / ss(j + 1)))];
                                     end
-                                    for r=1:length(sf)
-                                        esf=sf(r);
-                                        for p=1:siling(r)   
-                                            esf=mod(esf,1)*2;
-                                            h(p)=esf-mod(esf,1); %converting Pk into a binary number      
-                                        end
-                                        hh(r)=h(1)*10^(siling(r)-1); %initializtion for making the binary a whole number
-                                    for t=2:siling(r)
-                                            hh(r)=hh(r)+h(t)*10^(siling(r)-t);    %making the binary
-                                    a whole number
-                                        end    %e.g. 0.1101 ==&gt; 1101
+                                    
+                                    for r = 1:length(sf)
+                                        esf = sf(r);
+                                        h = zeros(1, siling(r));
+                                        for p = 1:siling(r)
+                                            esf = mod(esf, 1) * 2;
+                                            h(p) = esf - mod(esf, 1);
+                                        end
+                                        hh(r) = h(1) * 10^(siling(r) - 1);
+                                        for t = 2:siling(r)
+                                            hh(r) = hh(r) + h(t) * 10^(siling(r) - t);
+                                        end
                                     end
-
-                                    c={&#39;0&#39;,&#39;1&#39;};
-                                    disp(&#39;Codeword&#39;);
-
-                                    for i=1:length(hh)
-                                        u=1;   %converting the codes into a string
-                                       for t=siling(i):-1:1
-                                           f=floor(hh(i)/10^(t-1));               %1001 ==&gt; 1 (getting the first highest unit of a number)
-                                           hh(i)=mod(hh(i),10^(t-1));             %1001
-                                    ==&gt;001(eliminating the first highest unit of a number)
-                                    if f==1
-                                               if u==1
-                                                    d=c{2};    %conversion part (num(1001) to str(1001)) 
-                                               else
-                                                    d=[d c{2}];
-                                               end
-                                           else
-                                    if u==1
-                                                    d=c{1};
-                                               else
-                                                    d=[d c{1}];
-                                               end
-                                           end
-                                          
-                                           codex{i,:}={d};
-                                           u=u+1;
+                                    
+                                    c = {'0', '1'};
+                                    disp('Codeword');
+                                    codex = cell(length(hh), 1);
+                                    for i = 1:length(hh)
+                                        u = 1;
+                                        d = "";
+                                        for t = siling(i):-1:1
+                                            f = floor(hh(i) / 10^(t - 1));
+                                            hh(i) = mod(hh(i), 10^(t - 1));
+                                            if f == 1
+                                                if u == 1
+                                                    d = c{2};
+                                                else
+                                                    d = [d c{2}];
+                                                end
+                                            else
+                                                if u == 1
+                                                    d = c{1};
+                                                else
+                                                    d = [d c{1}];
+                                                end
+                                            end
+                                            u = u + 1;
+                                        end
+                                        codex{i} = d;
+                                        disp(d);
                                     end
-                                       disp([d])
-
+                                    
+                                    tao = siling(1) * ss(1);
+                                    for u = 1:length(ss) - 1
+                                        tao = tao + siling(u + 1) * ss(u + 1);
                                     end
-
-                                    tao=siling(1)*ss(1); %initialization for codeword length
-                                    for u=1:length(ss)-1 %computing for codeword length
-                                       tao=tao+siling(u+1)*ss(u+1);
-                                    end
-                                    T=tao/n; %computing for average codeword length
-                                    B=[flipud(rot90(ss)),flipud(rot90(siling)),flipud(rot90(info))];
-                                    disp([&#39;Probability&#39;,&#39;   Length&#39;,&#39;   Information&#39;])
-                                    disp(B)
-                                    disp([&#39;Entropy H(X) = &#39;,num2str(Hx),&#39;bits/symbol&#39;])
-                                    disp([&#39;Average length,L = &#39;,num2str(T),&#39;bits/symbol&#39;])
-                                    eff=((Hx/T)*100); %Coding efficiency
-                                    disp([&#39;Efficiency=&#39;,num2str(eff),&#39;%&#39;])
-                                    redu=100-eff;   %Redundancy
-                                    disp([&#39;Redundancy=&#39;,num2str(redu),&#39;%&#39;])
+                                    T = tao / n;
+                                    B = [flipud(rot90(ss)), flipud(rot90(siling)), flipud(rot90(info))];
+                                    disp(['Probability   Length   Information']);
+                                    disp(B);
+                                    disp(['Entropy H(X) = ', num2str(Hx), ' bits/symbol']);
+                                    disp(['Average length, L = ', num2str(T), ' bits/symbol']);
+                                    eff = (Hx / T) * 100;
+                                    disp(['Efficiency = ', num2str(eff), '%']);
+                                    redu = 100 - eff;
+                                    disp(['Redundancy = ', num2str(redu), '%']);
+                                    
                                 </code>
                             </pre>
                         </p>
