@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 def BFSK_PLOT1(user_input,sample_rate,bit_rate,freq1,freq2,duration,amplitude,pulse_code):
     if user_input == 'Binary':
-        bits = int(pulse_code)
+        bits = str(pulse_code)
         bitss = str(bits)
         t_bit = np.arange(0, len(bitss) / bit_rate, 1 / sample_rate)
 
@@ -73,7 +73,7 @@ def BFSK_PLOT1(user_input,sample_rate,bit_rate,freq1,freq2,duration,amplitude,pu
 
 def BFSK_PLOT2(user_input,sample_rate,bit_rate,freq1,freq2,duration,amplitude,pulse_code):
     if user_input == 'Binary':
-        bits = int(pulse_code)
+        bits = str(pulse_code)
         bitss = str(bits)
         t_bit = np.arange(0, len(bitss) / bit_rate, 1 / sample_rate)
 
