@@ -60,7 +60,6 @@ def ASK_Simulate2(A,F1,F2,user_input):
         print('Binary')
         # Binary data inputs
         binary_data=[]
-        F2 = int(F2)
         print('******************************')
         print('F2',F2)
         s = str(F2)
@@ -148,7 +147,6 @@ def ASK_Simulate3(A, F1, F2, user_input):
     if user_input == 'Binary':
         # Binary data inputs
         binary_data = []
-        F2 = int(F2)
         s = str(F2)
         for i in range(0, len(s)):
             binary_data.append(int(s[i]))

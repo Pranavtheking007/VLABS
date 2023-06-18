@@ -69,7 +69,17 @@
                         <h2 style="text-align: center;">Experiment 4 - Binary Phase Shift Keying (Simulation)</h2>
                     </div>
                 </section>
-                <section class="in">
+                <section class="in" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                    <div class="attendance-list" style="width: 100%; max-width: 600px;">
+                        <div class="" style="text-align: left;">
+                            <h5 style="text-align: center; text-decoration: underline;">Instructions</h5>
+                            <ul>
+                                <li>Read all the Instructions carefully</li>
+                                <li>Do not enter data input as all zeroes (eg. 0000)</li>
+                                <li>Do not enter data input as all ones (eg. 1111)</li>
+                            </ul>
+                        </div>
+                    </div>
                         <div class="attendance-list" style="width: 100%; max-width: 600px; display: flex; justify-content: center;">
                             <!-- <p style="color: #34AF6D; font-size: large; font-weight: 500; text-align: center;">Input</p>
                             <div class="dropdown" style="text-align: center; margin-bottom: 16px;"> -->
@@ -89,7 +99,7 @@
                                     </option>
                                 </select> -->
                             <!-- </div> -->
-                            <form action="sim4.html" method="post" >
+                            <form action="/sim4.html" method="post" >
 
                                 <select class="form-select" name="user_input" aria-label="Default select example" style="margin-bottom: 16px; background-color: #34AF6D; color: white; display: inline; width: auto;">
                                     <option selected>Select type of input</option>
@@ -99,17 +109,26 @@
 
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="freq_carrier">Amplitude of the signal</span>
-                                    <input type="number" class="form-control" name="Amplitude_of_carrier_signal" placeholder="frequency of carrier signal" aria-label="frequency of carrier signal" aria-describedby="freq_carrier">
+                                    <input type="number" class="form-control" name="Amplitude_of_carrier_signal" placeholder="Amplitude of carrier signal" aria-label="frequency of carrier signal" aria-describedby="freq_carrier">
                                 </div>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="freq_carrier">Enter the frequency of carrier signal</span>
-                                    <input type="number" class="form-control" name="frequency_of_carrier_signal" placeholder="frequency of carrier signal" aria-label="frequency of carrier signal" aria-describedby="freq_carrier">
+
+                                <div class="blockdiagram" style="position: relative; z-index: 0;">
+                                    <img src="../static/BPSK_modulator.png" class="img-fluid" alt="BPSK Modulator">
+                                
+                                    <input type="number" id="freq_carrier" name="frequency_of_carrier_signal" class="form-control" placeholder="Carrier Signal" style="position: absolute; z-index: 1; border: #838383 2px solid; top: 91%; left: 50%; width: 150px; border-radius: 5px;"  >
+                                    <input type="number" id="freq_pulse" name="frequency_of_Pulse_Signal" class="form-control" placeholder="Data Input" style="position: absolute; z-index: 1; border: #838383 2px solid; top: 36%; left: 0%; width: 140px; border-radius: 5px;"  >
                                 </div>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="freq_pulse">Data Input</span>
-                                    <input type="number" class="form-control" name="frequency_of_Pulse_Signal" placeholder="frequency of pulse signal" aria-label="frequency of carrier signal" aria-describedby="freq_pulse">
-                                </div>
-                                <div  style="text-align: center;">
+                                <!-- <div class="blockdiagraminput">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="freq_carrier">Enter the frequency of carrier signal</span>
+                                        <input type="number" class="form-control" name="frequency_of_carrier_signal" placeholder="frequency of carrier signal" aria-label="frequency of carrier signal" aria-describedby="freq_carrier">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="freq_pulse">Data Input</span>
+                                        <input type="number" class="form-control" name="frequency_of_Pulse_Signal" placeholder="frequency of pulse signal" aria-label="frequency of carrier signal" aria-describedby="freq_pulse">
+                                    </div>
+                                </div> -->
+                                <div style="text-align: center;">
                                     <button class="btn" type="submit" class="run">Run</button>
                                 </div>
                             </form>
