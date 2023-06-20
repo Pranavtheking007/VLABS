@@ -93,15 +93,12 @@
                                 <span class="input-group-text" id="freq_carrier">Amplitude of the signal</span>
                                 <input type="number" class="form-control" name="Amplitude_of_carrier_signal" placeholder="frequency of carrier signal" aria-label="frequency of carrier signal" aria-describedby="freq_carrier">
                             </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="freq_carrier">Enter the frequency of carrier signal</span>
-                                <input type="number" class="form-control" name="frequency_of_carrier_signal" placeholder="frequency of carrier signal" aria-label="frequency of carrier signal" aria-describedby="freq_carrier">
+                            <div class="blockdiagram" style="position: relative; z-index: 0;">
+                                <img src="../static/ASK-block.png" class="img-fluid" alt="BASK Modulator">
+                                <input type="number" class="form-control" name="frequency_of_carrier_signal" placeholder="frequency of carrier signal" aria-label="frequency of carrier signal" aria-describedby="freq_carrier" style="position: absolute; z-index: 1; border: #838383 2px solid; top: 65%; left: 0%; width: 150px; border-radius: 5px;">
+                                <input type="number" class="form-control" name="frequency_of_Pulse_Signal" placeholder="Data Input" aria-label="frequency of carrier signal" aria-describedby="freq_pulse" style="position: absolute; z-index: 1; border: #838383 2px solid; top: 95%; left: 30%; width: 140px; border-radius: 5px;">
                             </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="freq_pulse">Data Input</span>
-                                <input type="number" class="form-control" name="frequency_of_Pulse_Signal" placeholder="frequency of pulse signal" aria-label="frequency of carrier signal" aria-describedby="freq_pulse">
-                            </div>
-                            <div  style="text-align: center;">
+                            <div class="mt-5" style="text-align: center; ">
                                 <button class="btn" type="submit" class="run">Run</button>
                             </div>
                         </form>   
@@ -113,7 +110,7 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <p class="Link-head">Quick Links</p>
-                            <p class="Links"><a href="" style="color: black;">Feedback</a></p>
+                            <p class="Links"><a href="https://forms.gle/jhkbKzM74ETdTtqh9" style="color: black;">Feedback</a></p>
                             <p class="Links"><a href="https://www.kjsieit.in/simsbackup/2021/Even/php/home.php" style="color: black;" target="_blank">Sims Portal</a></p>
                             <p class="Links"><a href="https://kjsieit.somaiya.edu.in/en" style="color: black;" target="_blank">KJSIEIT Website</a></p>
                         </div>
