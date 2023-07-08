@@ -171,14 +171,19 @@
                             <p class="Links"><a href="https://www.google.com/maps/place/K.+J.+Somaiya+Institute+of+Engineering+and+Information+Technology/@19.046058,72.8710809,15z/data=!4m5!3m4!1s0x0:0x473006136ad440dc!8m2!3d19.046058!4d72.8710809" target="_blank" style="color: black;">Address</a></p>
                         </div>
                     </div>
+                    <div style="text-align: center; color:rgb(255, 255, 255); font-weight: 600; margin-top: 20px;">
+                        <p>Prepared By: Department of Electronics and Telecommunication</p>
+                        <p>2022-23</p>
+                        <p>Guided By: Prof. Rupali Satpute</p>
+                    </div>
                     <div class="row" style=" font-size: small; display: flex; width: auto;">
                         <p style="display: flex; color: black; justify-content: space-around; align-items: center;">
                             Developed By: 
-                            <a href="https://www.linkedin.com/in/pranav-singh-9b2996217/" class="name" style="padding: auto 0; color: black; margin-right: 0; margin-left: 0;" target="_blank">Pranav Singh</a>
-                            <a href="https://www.linkedin.com/in/sahil-kumar14/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;" target="_blank">Sahil Kumar</a>
-                            <a href="https://www.linkedin.com/in/aditya-khedekar-151840245/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;" target="_blank">Aditya Khedekar</a>
-                            <a href="https://www.linkedin.com/in/vedant-tadla-397028238/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;" target="_blank">Vedant Tadala</a>
-                            <a href="https://www.linkedin.com/in/kunal-thakkar-parallelpvt/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;" target="_blank">Kunal Thakkar</a>
+                            <a href="https://www.linkedin.com/in/pranav-singh-9b2996217/" class="name" style="padding: auto 0; color: black; margin-right: 0; margin-left: 0; font-weight: 600;" target="_blank">Pranav Singh</a>
+                            <a href="https://www.linkedin.com/in/sahil-kumar14/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0; font-weight: 600;" target="_blank">Sahil Kumar</a>
+                            <a href="https://www.linkedin.com/in/aditya-khedekar-151840245/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0; font-weight: 600;" target="_blank">Aditya Khedekar</a>
+                            <a href="https://www.linkedin.com/in/vedant-tadla-397028238/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0; font-weight: 600;" target="_blank">Vedant Tadala</a>
+                            <a href="https://www.linkedin.com/in/kunal-thakkar-parallelpvt/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0; font-weight: 600;" target="_blank">Kunal Thakkar</a>
                         </p>
                     </div>
                     <hr>
@@ -200,7 +205,7 @@
                         </div>
                         <div class="col-lg-3">
                             <p>
-                                <a href="extc.html" style="color: black;">&copy; 2022 KJ Labs</a>
+                                <a href="extc.html" style="color: black;">&copy; <span class="date"></span> KJ Labs</a>
                             </p>
                         </div>
                     </div>
@@ -210,5 +215,9 @@
     </div>
 
 </body>
-
+<script>
+    // dynamic year
+    var year = new Date().getFullYear();
+    document.querySelector(".date").innerHTML = year;
+</script>
 </html>

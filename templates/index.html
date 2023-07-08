@@ -26,42 +26,6 @@
 
 <body>
     <div class="box">
-        <!-- <nav>
-            <ul class="list-group">
-                <li>
-                    <a href="#" class="logo">
-                        <img src="/Static/profile.png">
-                        <span class="nav-item">User</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/templates/loginPage.html" class="logout">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span class="nav-item">Login</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/Templates/index.html">
-                        <i class="fas fa-menorah"></i>
-                        <span class="nav-item">Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.somaiya.edu.in/en/about">
-                        <i class="fas fa-comment"></i>
-                        <span class="nav-item">About</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#branches">
-                        <i class="fas fa-chart-bar"></i>
-                        <span class="nav-item">Branches</span>
-                    </a>
-                </li>
-
-            </ul>
-        </nav> -->
-
         <section class="main" id="top">
             <section class="header">
                 <table style="width: 100%; font-weight: bold; color: #b7202e;">
@@ -97,14 +61,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button> -->
-                    <!-- <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button> -->
                 </div>
             </section>
             <div>
@@ -200,7 +156,7 @@
                                     target="_blank" style="color: black;" target="_blank">Address</a></p>
                         </div>
                     </div>
-                    <div style="text-align: center; color:black; font-weight: 450; margin-top: 20px;">
+                    <div style="text-align: center; color:white; font-weight: 600; margin-top: 20px;">
                         <p>Prepared By: Department of Electronics and Telecommunication</p>
                         <p>2022-23</p>
                         <p>Guided By: Prof. Rupali Satpute</p>
@@ -208,11 +164,11 @@
                     <div style="padding-left: 10px; font-size: small;">
                         <p style="text-align: center; display: flex; color: black;" >
                             <b>Developed By:</b>
-                            <a href="https://www.linkedin.com/in/pranav-singh-9b2996217/" class="name" style="padding: auto 0; color: black; margin-right: 0; margin-left: 0;" target="_blank">Pranav Singh</a>
-                            <a href="https://www.linkedin.com/in/sahil-kumar14/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;" target="_blank">Sahil Kumar</a>
-                            <a href="https://www.linkedin.com/in/aditya-khedekar-151840245/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;" target="_blank">Aditya Khedekar</a>
-                            <a href="https://www.linkedin.com/in/vedant-tadla-397028238/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;" target="_blank">Vedant Tadla</a>
-                            <a href="https://www.linkedin.com/in/kunal-thakkar-parallelpvt/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;" target="_blank">Kunal Thakkar</a>
+                            <a href="https://www.linkedin.com/in/pranav-singh-9b2996217/" class="name" style="padding: auto 0; color: black; margin-right: 0; margin-left: 0; font-weight: 600;" target="_blank">Pranav Singh</a>
+                            <a href="https://www.linkedin.com/in/sahil-kumar14/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0; font-weight: 600;" target="_blank">Sahil Kumar</a>
+                            <a href="https://www.linkedin.com/in/aditya-khedekar-151840245/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0; font-weight: 600;" target="_blank">Aditya Khedekar</a>
+                            <a href="https://www.linkedin.com/in/vedant-tadla-397028238/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0; font-weight: 600;" target="_blank">Vedant Tadla</a>
+                            <a href="https://www.linkedin.com/in/kunal-thakkar-parallelpvt/" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0; font-weight: 600;" target="_blank">Kunal Thakkar</a>
                         </p>
                     </div>
                     <hr>
@@ -234,7 +190,7 @@
                         </div>
                         <div class="col-lg-3">
                             <p>
-                                <a href="#top" style="color: black;">&copy; 2022 KJ Labs</a>
+                                <a href="#top" style="color: black;">&copy; <span class="year"></span> KJ Labs</a>
                             </p>
                         </div>
                     </div>
@@ -243,5 +199,9 @@
         </section>
     </div>
 </body>
-
+<script>
+    // dynamic year
+    var year = new Date().getFullYear();
+    document.querySelector(".year").innerHTML = year;
+</script>
 </html>

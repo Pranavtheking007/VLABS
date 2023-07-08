@@ -74,6 +74,7 @@
                             <th><a href="#theory">Code</a></th>
                             <th><a href="#conclusion">Conclusion</a></th>
                             <th><a href="/sim10.html">Simulation</a></th>
+                            <th><a href="/quiz1.html">Quiz</a></th>
                         </table>
                     </div>
                     <div>
@@ -287,23 +288,19 @@
                         </div>
                         <div class="col-lg-3">
                             <p>
-                                <a href="extc.html" style="color: black;" target="_blank">&copy; 2022 KJ Labs</a>
+                                <a href="extc.html" style="color: black;">&copy; <span class="year"></span> KJ Labs</a>
                             </p>
                         </div>
                     </div>
-                    <!-- <div style="padding-left: 10px; font-size: small;">
-                        <p style="text-align: center; display: flex; color: black;" >
-                            Developed By: 
-                            <a href="" class="name" style="padding: auto 0; color: black; margin-right: 0; margin-left: 0;">Pranav Singh,&nbsp</a>
-                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Sahil Kumar,&nbsp</a>
-                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Aditya Khedekar,&nbsp</a>
-                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Vedant Tadala,&nbsp</a>
-                            <a href="" class="name" style="padding: auto 0; color: black; margin-left: 0; margin-left: 0;">Kunal Thakkar.&nbsp</a>
-                        </p>
-                    </div> -->
+                    
                 </footer>
             </section>
         </section>
     </div>
 </body>
+<script>
+    // dynamic year
+    var year = new Date().getFullYear();
+    document.querySelector(".year").innerHTML = year;
+</script>
 </html>
