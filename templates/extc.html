@@ -23,6 +23,16 @@
 </head>
 
 <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" style="position: absolute; z-index: 10; width: 100%;">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {%endif%}
+    {% endwith %}
     <div class="box">
         <nav>
             <ul class="list-group">
@@ -219,5 +229,9 @@
     // dynamic year
     var year = new Date().getFullYear();
     document.querySelector(".date").innerHTML = year;
+
+    setTimeout(function() {
+        document.querySelector(".alert").style.display = "none";
+    }, 3000);
 </script>
 </html>
