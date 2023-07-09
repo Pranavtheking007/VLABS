@@ -1,6 +1,6 @@
 #Imports
 import sqlite3
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, flash
 import pyrebase
 import ASK
 import PSK
@@ -53,10 +53,12 @@ def register():
         try:
            user = auth.create_user_with_email_and_password(email, password)
         except:
-           return 'Error 404'
+            flash("Registration Failed! Fill the details correctly", "danger")
+            return render_template('loginPage.html')
         #   print(user)
 
         auth.send_email_verification(user['idToken'])
+  flash("Registered Successfully", "success")
   return render_template('loginPage.html')
 
 @app.route('/loginPage.html', methods=['GET','POST'])
@@ -68,7 +70,9 @@ def index():
               user = auth.sign_in_with_email_and_password(email, password)
               session['user'] = email
             except:
-              return 'Login Failed'
+              flash("Invalid Credentials", "danger")
+              return render_template('loginPage.html')
+        flash("Login Successful", "success")
         return render_template('extc.html')
 
 @app.route('/experiments.html')

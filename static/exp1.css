@@ -333,9 +333,11 @@ footer a:hover {
     padding: 10px 0;
 }
 
-.name {
-    border-radius: 0;
-    width: auto;
+.name
+{
+    border-radius: 50px;
+    max-width: 200px;
+    min-width: auto;
     color: black;
     margin: 0;
     text-align: center;

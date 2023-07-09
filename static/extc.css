@@ -175,8 +175,7 @@ img
     padding-bottom: 0;
     width: 100%;
     height: auto;
-    background: rgb(74,212,137);
-    background: linear-gradient(270deg, rgb(111, 221, 160) 0%, rgb(255, 255, 255) 100%);
+    background: rgb(226, 226, 226);
 }
 
 .main-top {
