@@ -282,7 +282,7 @@ table thead tr {
     border-bottom: 2px solid #4AD489;
 }
 
-.table button {
+.table .view {
     padding: 6px 20px;
     border-radius: 10px;
     cursor: pointer;
@@ -291,9 +291,24 @@ table thead tr {
     transition: 0.4s;
 }
 
-.table button:hover {
+.table .view:hover {
     background: #4AD489;
     color: #fff;
+}
+
+.quiz{
+    padding: 6px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #4AD489;
+    transition: 0.4s;
+    background-color: #4AD489;
+    color: #fff;
+}
+
+.table .quiz:hover {
+    background: #fff;
+    color: #000;
 }
 
 
