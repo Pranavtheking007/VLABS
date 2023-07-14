@@ -92,11 +92,6 @@ def quiz1_submit():
         q3 = request.form['q3']
         q4 = request.form['q4']
         q5 = request.form['q5']
-        q6 = request.form['q6']
-        q7 = request.form['q7']
-        q8 = request.form['q8']
-        q9 = request.form['q9']
-        q10 = request.form['q10']
 
         if q1 == 'a':
             score += 1
@@ -108,16 +103,6 @@ def quiz1_submit():
             score += 1
         if q5 == 'b':
             score += 1
-        if q6 == 'c':
-            score += 1
-        if q7 == 'a':
-            score += 1
-        if q8 == 'b':
-            score += 1
-        if q9 == 'c':
-            score += 1
-        if q10 == 'a':
-            score += 1
     return render_template('quiz1.html', score=score)
 
 @app.route('/quiz2.html')
@@ -126,42 +111,25 @@ def quiz2():
 
 @app.route('/quiz2.html', methods=['POST'])
 def quiz2_submit():
-        score = 0
-        if request.method == 'POST':
-            score = 0
-        if request.method == 'POST':
-            answer1 = request.form['answer1']
-            answer2 = request.form['answer2']
-            answer3 = request.form['answer3']
-            answer4 = request.form['answer4']
-            answer5 = request.form['answer5']
-            answer6 = request.form['answer6']
-            answer7 = request.form['answer7']
-            answer8 = request.form['answer8']
-            answer9 = request.form['answer9']
-            answer10 = request.form['answer10']
+    score = 0
+    if request.method == 'POST':
+        q1 = request.form['q1']
+        q2 = request.form['q2']
+        q3 = request.form['q3']
+        q4 = request.form['q4']
+        q5 = request.form['q5']
 
-            if answer1 == 'a':
-                score += 1
-            if answer2 == 'b':
-                score += 1
-            if answer3 == 'c':
-                score += 1
-            if answer4 == 'a':
-                score += 1
-            if answer5 == 'b':
-                score += 1
-            if answer6 == 'c':
-                score += 1
-            if answer7 == 'a':
-                score += 1
-            if answer8 == 'b':
-                score += 1
-            if answer9 == 'c':
-                score += 1
-            if answer10 == 'a':
-                score += 1
-        return render_template('quiz2.html', score=score)
+        if q1 == 'd':
+            score += 1
+        if q2 == 'c':
+            score += 1
+        if q3 == 'd':
+            score += 1
+        if q4 == 'd':
+            score += 1
+        if q5 == 'c':
+            score += 1
+    return render_template('quiz2.html', score=score)
 
 @app.route('/quiz3.html')
 def quiz3():
@@ -169,42 +137,25 @@ def quiz3():
 
 @app.route('/quiz3.html', methods=['POST'])
 def quiz3_submit():
-        score = 0
-        if request.method == 'POST':
-            score = 0
-        if request.method == 'POST':
-            answer1 = request.form['answer1']
-            answer2 = request.form['answer2']
-            answer3 = request.form['answer3']
-            answer4 = request.form['answer4']
-            answer5 = request.form['answer5']
-            answer6 = request.form['answer6']
-            answer7 = request.form['answer7']
-            answer8 = request.form['answer8']
-            answer9 = request.form['answer9']
-            answer10 = request.form['answer10']
+    score = 0
+    if request.method == 'POST':
+        q1 = request.form['q1']
+        q2 = request.form['q2']
+        q3 = request.form['q3']
+        q4 = request.form['q4']
+        q5 = request.form['q5']
 
-            if answer1 == 'a':
-                score += 1
-            if answer2 == 'b':
-                score += 1
-            if answer3 == 'c':
-                score += 1
-            if answer4 == 'a':
-                score += 1
-            if answer5 == 'b':
-                score += 1
-            if answer6 == 'c':
-                score += 1
-            if answer7 == 'a':
-                score += 1
-            if answer8 == 'b':
-                score += 1
-            if answer9 == 'c':
-                score += 1
-            if answer10 == 'a':
-                score += 1
-        return render_template('quiz3.html', score=score)
+        if q1 == 'b':
+            score += 1
+        if q2 == 'd':
+            score += 1
+        if q3 == 'b':
+            score += 1
+        if q4 == 'b':
+            score += 1
+        if q5 == 'a':
+            score += 1
+    return render_template('quiz3.html', score=score)
 
 @app.route('/quiz4.html')
 def quiz4():
@@ -212,42 +163,25 @@ def quiz4():
 
 @app.route('/quiz4.html', methods=['POST'])
 def quiz4_submit():
-        score = 0
-        if request.method == 'POST':
-            score = 0
-        if request.method == 'POST':
-            answer1 = request.form['answer1']
-            answer2 = request.form['answer2']
-            answer3 = request.form['answer3']
-            answer4 = request.form['answer4']
-            answer5 = request.form['answer5']
-            answer6 = request.form['answer6']
-            answer7 = request.form['answer7']
-            answer8 = request.form['answer8']
-            answer9 = request.form['answer9']
-            answer10 = request.form['answer10']
+    score = 0
+    if request.method == 'POST':
+        q1 = request.form['q1']
+        q2 = request.form['q2']
+        q3 = request.form['q3']
+        q4 = request.form['q4']
+        q5 = request.form['q5']
 
-            if answer1 == 'a':
-                score += 1
-            if answer2 == 'b':
-                score += 1
-            if answer3 == 'c':
-                score += 1
-            if answer4 == 'a':
-                score += 1
-            if answer5 == 'b':
-                score += 1
-            if answer6 == 'c':
-                score += 1
-            if answer7 == 'a':
-                score += 1
-            if answer8 == 'b':
-                score += 1
-            if answer9 == 'c':
-                score += 1
-            if answer10 == 'a':
-                score += 1
-        return render_template('quiz4.html', score=score)
+        if q1 == 'b':
+            score += 1
+        if q2 == 'a':
+            score += 1
+        if q3 == 'b':
+            score += 1
+        if q4 == 'b':
+            score += 1
+        if q5 == 'a':
+            score += 1
+    return render_template('quiz4.html', score=score)
 
 @app.route('/quiz5.html')
 def quiz5():
@@ -255,42 +189,25 @@ def quiz5():
 
 @app.route('/quiz5.html', methods=['POST'])
 def quiz5_submit():
-        score = 0
-        if request.method == 'POST':
-            score = 0
-        if request.method == 'POST':
-            answer1 = request.form['answer1']
-            answer2 = request.form['answer2']
-            answer3 = request.form['answer3']
-            answer4 = request.form['answer4']
-            answer5 = request.form['answer5']
-            answer6 = request.form['answer6']
-            answer7 = request.form['answer7']
-            answer8 = request.form['answer8']
-            answer9 = request.form['answer9']
-            answer10 = request.form['answer10']
+    score = 0
+    if request.method == 'POST':
+        q1 = request.form['q1']
+        q2 = request.form['q2']
+        q3 = request.form['q3']
+        q4 = request.form['q4']
+        q5 = request.form['q5']
 
-            if answer1 == 'a':
-                score += 1
-            if answer2 == 'b':
-                score += 1
-            if answer3 == 'c':
-                score += 1
-            if answer4 == 'a':
-                score += 1
-            if answer5 == 'b':
-                score += 1
-            if answer6 == 'c':
-                score += 1
-            if answer7 == 'a':
-                score += 1
-            if answer8 == 'b':
-                score += 1
-            if answer9 == 'c':
-                score += 1
-            if answer10 == 'a':
-                score += 1
-        return render_template('quiz5.html', score=score)
+        if q1 == 'a':
+            score += 1
+        if q2 == 'b':
+            score += 1
+        if q3 == 'c':
+            score += 1
+        if q4 == 'a':
+            score += 1
+        if q5 == 'b':
+            score += 1
+    return render_template('quiz5.html', score=score)
 
 @app.route('/quiz6.html')
 def quiz6():
@@ -298,42 +215,25 @@ def quiz6():
 
 @app.route('/quiz6.html', methods=['POST'])
 def quiz6_submit():
-        score = 0
-        if request.method == 'POST':
-            score = 0
-        if request.method == 'POST':
-            answer1 = request.form['answer1']
-            answer2 = request.form['answer2']
-            answer3 = request.form['answer3']
-            answer4 = request.form['answer4']
-            answer5 = request.form['answer5']
-            answer6 = request.form['answer6']
-            answer7 = request.form['answer7']
-            answer8 = request.form['answer8']
-            answer9 = request.form['answer9']
-            answer10 = request.form['answer10']
+    score = 0
+    if request.method == 'POST':
+        q1 = request.form['q1']
+        q2 = request.form['q2']
+        q3 = request.form['q3']
+        q4 = request.form['q4']
+        q5 = request.form['q5']
 
-            if answer1 == 'a':
-                score += 1
-            if answer2 == 'b':
-                score += 1
-            if answer3 == 'c':
-                score += 1
-            if answer4 == 'a':
-                score += 1
-            if answer5 == 'b':
-                score += 1
-            if answer6 == 'c':
-                score += 1
-            if answer7 == 'a':
-                score += 1
-            if answer8 == 'b':
-                score += 1
-            if answer9 == 'c':
-                score += 1
-            if answer10 == 'a':
-                score += 1
-        return render_template('quiz6.html', score=score)
+        if q1 == 'a':
+            score += 1
+        if q2 == 'b':
+            score += 1
+        if q3 == 'c':
+            score += 1
+        if q4 == 'a':
+            score += 1
+        if q5 == 'b':
+            score += 1
+    return render_template('quiz6.html', score=score)
 
 @app.route('/quiz7.html')
 def quiz7():
@@ -341,42 +241,25 @@ def quiz7():
 
 @app.route('/quiz7.html', methods=['POST'])
 def quiz7_submit():
-        score = 0
-        if request.method == 'POST':
-            score = 0
-        if request.method == 'POST':
-            answer1 = request.form['answer1']
-            answer2 = request.form['answer2']
-            answer3 = request.form['answer3']
-            answer4 = request.form['answer4']
-            answer5 = request.form['answer5']
-            answer6 = request.form['answer6']
-            answer7 = request.form['answer7']
-            answer8 = request.form['answer8']
-            answer9 = request.form['answer9']
-            answer10 = request.form['answer10']
+    score = 0
+    if request.method == 'POST':
+        q1 = request.form['q1']
+        q2 = request.form['q2']
+        q3 = request.form['q3']
+        q4 = request.form['q4']
+        q5 = request.form['q5']
 
-            if answer1 == 'a':
-                score += 1
-            if answer2 == 'b':
-                score += 1
-            if answer3 == 'c':
-                score += 1
-            if answer4 == 'a':
-                score += 1
-            if answer5 == 'b':
-                score += 1
-            if answer6 == 'c':
-                score += 1
-            if answer7 == 'a':
-                score += 1
-            if answer8 == 'b':
-                score += 1
-            if answer9 == 'c':
-                score += 1
-            if answer10 == 'a':
-                score += 1
-        return render_template('quiz7.html', score=score)
+        if q1 == 'a':
+            score += 1
+        if q2 == 'b':
+            score += 1
+        if q3 == 'c':
+            score += 1
+        if q4 == 'a':
+            score += 1
+        if q5 == 'b':
+            score += 1
+    return render_template('quiz7.html', score=score)
 
 @app.route('/quiz8.html')
 def quiz8():
@@ -384,42 +267,25 @@ def quiz8():
 
 @app.route('/quiz8.html', methods=['POST'])
 def quiz8_submit():
-        score = 0
-        if request.method == 'POST':
-            score = 0
-        if request.method == 'POST':
-            answer1 = request.form['answer1']
-            answer2 = request.form['answer2']
-            answer3 = request.form['answer3']
-            answer4 = request.form['answer4']
-            answer5 = request.form['answer5']
-            answer6 = request.form['answer6']
-            answer7 = request.form['answer7']
-            answer8 = request.form['answer8']
-            answer9 = request.form['answer9']
-            answer10 = request.form['answer10']
+    score = 0
+    if request.method == 'POST':
+        q1 = request.form['q1']
+        q2 = request.form['q2']
+        q3 = request.form['q3']
+        q4 = request.form['q4']
+        q5 = request.form['q5']
 
-            if answer1 == 'a':
-                score += 1
-            if answer2 == 'b':
-                score += 1
-            if answer3 == 'c':
-                score += 1
-            if answer4 == 'a':
-                score += 1
-            if answer5 == 'b':
-                score += 1
-            if answer6 == 'c':
-                score += 1
-            if answer7 == 'a':
-                score += 1
-            if answer8 == 'b':
-                score += 1
-            if answer9 == 'c':
-                score += 1
-            if answer10 == 'a':
-                score += 1
-        return render_template('quiz8.html', score=score)
+        if q1 == 'a':
+            score += 1
+        if q2 == 'b':
+            score += 1
+        if q3 == 'd':
+            score += 1
+        if q4 == 'c':
+            score += 1
+        if q5 == 'a':
+            score += 1
+    return render_template('quiz8.html', score=score)
 
 @app.route('/quiz9.html')
 def quiz9():
@@ -427,42 +293,25 @@ def quiz9():
 
 @app.route('/quiz9.html', methods=['POST'])
 def quiz9_submit():
-        score = 0
-        if request.method == 'POST':
-            score = 0
-        if request.method == 'POST':
-            answer1 = request.form['answer1']
-            answer2 = request.form['answer2']
-            answer3 = request.form['answer3']
-            answer4 = request.form['answer4']
-            answer5 = request.form['answer5']
-            answer6 = request.form['answer6']
-            answer7 = request.form['answer7']
-            answer8 = request.form['answer8']
-            answer9 = request.form['answer9']
-            answer10 = request.form['answer10']
+    score = 0
+    if request.method == 'POST':
+        q1 = request.form['q1']
+        q2 = request.form['q2']
+        q3 = request.form['q3']
+        q4 = request.form['q4']
+        q5 = request.form['q5']
 
-            if answer1 == 'a':
-                score += 1
-            if answer2 == 'b':
-                score += 1
-            if answer3 == 'c':
-                score += 1
-            if answer4 == 'a':
-                score += 1
-            if answer5 == 'b':
-                score += 1
-            if answer6 == 'c':
-                score += 1
-            if answer7 == 'a':
-                score += 1
-            if answer8 == 'b':
-                score += 1
-            if answer9 == 'c':
-                score += 1
-            if answer10 == 'a':
-                score += 1
-        return render_template('quiz9.html', score=score)
+        if q1 == 'a':
+            score += 1
+        if q2 == 'b':
+            score += 1
+        if q3 == 'a':
+            score += 1
+        if q4 == 'a':
+            score += 1
+        if q5 == 'b':
+            score += 1
+    return render_template('quiz9.html', score=score)
 
 @app.route('/quiz10.html')
 def quiz10():
@@ -470,42 +319,25 @@ def quiz10():
 
 @app.route('/quiz10.html', methods=['POST'])
 def quiz10_submit():
-        score = 0
-        if request.method == 'POST':
-            score = 0
-        if request.method == 'POST':
-            answer1 = request.form['answer1']
-            answer2 = request.form['answer2']
-            answer3 = request.form['answer3']
-            answer4 = request.form['answer4']
-            answer5 = request.form['answer5']
-            answer6 = request.form['answer6']
-            answer7 = request.form['answer7']
-            answer8 = request.form['answer8']
-            answer9 = request.form['answer9']
-            answer10 = request.form['answer10']
+    score = 0
+    if request.method == 'POST':
+        q1 = request.form['q1']
+        q2 = request.form['q2']
+        q3 = request.form['q3']
+        q4 = request.form['q4']
+        q5 = request.form['q5']
 
-            if answer1 == 'a':
-                score += 1
-            if answer2 == 'b':
-                score += 1
-            if answer3 == 'c':
-                score += 1
-            if answer4 == 'a':
-                score += 1
-            if answer5 == 'b':
-                score += 1
-            if answer6 == 'c':
-                score += 1
-            if answer7 == 'a':
-                score += 1
-            if answer8 == 'b':
-                score += 1
-            if answer9 == 'c':
-                score += 1
-            if answer10 == 'a':
-                score += 1
-        return render_template('quiz10.html', score=score)
+        if q1 == 'c':
+            score += 1
+        if q2 == 'd':
+            score += 1
+        if q3 == 'c':
+            score += 1
+        if q4 == 'b':
+            score += 1
+        if q5 == 'd':
+            score += 1
+    return render_template('quiz10.html', score=score)
 
 from flask import send_file
 
