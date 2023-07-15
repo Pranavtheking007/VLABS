@@ -5,7 +5,6 @@ t=num.arange(0,1,0.001)
 def PSK_Simulate1(A,f1,F2,User_Input):
 
     if User_Input=='Binary':
-        if User_Input == 'Binary':
             print('Binary')
             # Binary data inputs
             binary_data=[]
