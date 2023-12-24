@@ -7,5 +7,5 @@ flask
 urllib3
 pyrebase4
 requests-toolbelt==0.10.1
-waitress
+gunicorn
 
