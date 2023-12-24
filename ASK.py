@@ -173,12 +173,27 @@ def ASK_Simulate3(A, F1, F2, user_input):
 
         # Multiply the carrier signal with square wave
         v = A * num.sin(2 * num.pi * F1 * t2) * waves
-
+        x=A*num.sin(2*num.pi*F1*t2)#Carrier Sine wave
+        u=[]#Message signal
+        b=[0.2,0.4,0.6,0.8,1.0]
+        fig , axs = plt.subplots(3,1,figsize=(50,100))
+        fig.subplots_adjust(hspace=0.7,wspace=0.7)
         # Plot the ASK signal
-        plt.plot(t2, v)
-        plt.xlabel('Time')
-        plt.ylabel('Amplitude')
-        plt.title('ASK Signal')
+        axs[0].plot(t2, waves, drawstyle='steps-post')
+        axs[0].set_title('fuckyou')
+        axs[0].set_xlabel('yo')
+        axs[0].set_ylabel('Hi')
+
+        axs[1].plot(t2, v)
+        axs[1].set_title('fuckyou')
+        axs[1].set_xlabel('yo')
+        axs[1].set_ylabel('Hi')
+
+        axs[2].plot(t2,x)
+        axs[2].set_title('fuckyou')
+        axs[2].set_xlabel('yo')
+        axs[2].set_ylabel('Hi')
+
         plt.grid(True)
         plt.show()
 

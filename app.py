@@ -92,18 +92,20 @@ def quiz1_submit():
         q3 = request.form['q3']
         q4 = request.form['q4']
         q5 = request.form['q5']
-
-        if q1 == 'a':
+        print(q1[2:])
+        a_ch = q1[2:]
+        a_co = 'Atomic Mass'
+        if q1[0] == 'a':
             score += 1
-        if q2 == 'b':
+        if q2[0] == 'a':
             score += 1
-        if q3 == 'c':
+        if q3[0] == 'a':
             score += 1
-        if q4 == 'a':
+        if q4[0] == 'a':
             score += 1
-        if q5 == 'b':
+        if q5[0] == 'a':
             score += 1
-    return render_template('quiz1.html', score=score)
+    return render_template('quiz1.html', score=score, a_ch=a_ch,a_co=a_co)
 
 @app.route('/quiz2.html')
 def quiz2():
