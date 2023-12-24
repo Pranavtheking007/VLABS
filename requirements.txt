@@ -2,8 +2,9 @@ numpy
 pandas
 seaborn
 matplotlib
-django
+scikit-learn
 flask
-pyrebase
 urllib3
+pyrebase4
+requests-toolbelt==0.10.1
 

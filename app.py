@@ -1,10 +1,16 @@
 #Imports
+import collections
+from collections import abc
+collections.MutableMapping = abc.MutableMapping
+
 import sqlite3
 from flask import Flask, render_template, request, session, redirect, flash
 import pyrebase
 import ASK
 import PSK
 import BFSK
+from collections.abc import MutableMapping
+
 #Setup
 app = Flask(__name__)
 
