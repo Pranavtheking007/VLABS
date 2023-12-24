@@ -180,17 +180,17 @@ def ASK_Simulate3(A, F1, F2, user_input):
         fig.subplots_adjust(hspace=0.7,wspace=0.7)
         # Plot the ASK signal
         axs[0].plot(t2, waves, drawstyle='steps-post')
-        axs[0].set_title('fuckyou')
+        axs[0].set_title('Amplitude')
         axs[0].set_xlabel('yo')
         axs[0].set_ylabel('Hi')
 
         axs[1].plot(t2, v)
-        axs[1].set_title('fuckyou')
+        axs[1].set_title('Sqquare Plot')
         axs[1].set_xlabel('yo')
         axs[1].set_ylabel('Hi')
 
         axs[2].plot(t2,x)
-        axs[2].set_title('fuckyou')
+        axs[2].set_title('ASK WavePlot')
         axs[2].set_xlabel('yo')
         axs[2].set_ylabel('Hi')
 
