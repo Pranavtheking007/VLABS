@@ -1,5 +1,8 @@
 import matplotlib.pylab as plt
 import numpy as num
+from matplotlib.figure import Figure
+import base64
+from io import BytesIO
 
 t=num.arange(0,1,0.001)
 
@@ -23,14 +26,23 @@ def ASK_Simulate1(A,F1,F2,user_input):
         x=A*num.sin(2*num.pi*F1*t2)#Carrier Sine wave
         u=[]#Message signal
         b=[0.2,0.4,0.6,0.8,1.0]
-            
-
-        plt.plot(t2,x);
-        plt.xlabel('Time');
-        plt.ylabel('Amplitude');
-        plt.title('Carrier');
-        plt.grid(True)
-        plt.show()
+        
+         
+        fig = Figure()
+        ax = fig.subplots()
+        ax.plot(t2,x)
+        # Save it to a temporary buffer.
+        buf = BytesIO()
+        fig.savefig(buf, format="png")
+        # Embed the result in the html output.
+        data = base64.b64encode(buf.getbuffer()).decode("ascii")
+        return f"<img src='data:image/png;base64,{data}'/>"
+        # plt.plot(t2,x);
+        # plt.xlabel('Time');
+        # plt.ylabel('Amplitude');
+        # plt.title('Carrier');
+        # plt.grid(True)
+        # plt.show()
 
        
     else:
