@@ -1,4 +1,7 @@
-import matplotlib.pylab as plt
+import matplotlib
+matplotlib.use('TkAgg',force=True)
+
+import matplotlib.pyplot as plt
 import numpy as num
 from matplotlib.figure import Figure
 import base64
@@ -8,7 +11,7 @@ t=num.arange(0,1,0.001)
 
 def ASK_Simulate1(A,F1,F2,user_input):
     if user_input == 'Binary':
-        print('Binary')
+        print("Binary Inputs")
         # Binary data inputs
         binary_data=[]
         F2 = int(F2)
@@ -28,32 +31,29 @@ def ASK_Simulate1(A,F1,F2,user_input):
         b=[0.2,0.4,0.6,0.8,1.0]
         
          
-        fig = Figure()
-        ax = fig.subplots()
-        ax.plot(t2,x)
-        # Save it to a temporary buffer.
-        buf = BytesIO()
-        fig.savefig(buf, format="png")
-        # Embed the result in the html output.
-        data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return f"<img src='data:image/png;base64,{data}'/>"
-        # plt.plot(t2,x);
-        # plt.xlabel('Time');
-        # plt.ylabel('Amplitude');
-        # plt.title('Carrier');
-        # plt.grid(True)
-        # plt.show()
+        # fig = Figure()
+        # ax = fig.subplots()
+        # ax.plot(t2,x)
+        # # Save it to a temporary buffer.
+        # buf = BytesIO()
+        # fig.savefig(buf, format="png")
+        # # Embed the result in the html output.
+        # data = base64.b64encode(buf.getbuffer()).decode("ascii")
+        # print(data)
+        # return f"<img src='data:image/png;base64,{data}'/>"
+        plt.plot(t2,x);
+        plt.xlabel('Time');
+        plt.ylabel('Amplitude');
+        plt.title('Carrier');
+        plt.grid(True)
+        plt.show()
 
        
     else:
         x=A*num.sin(2*num.pi*F1*t)#Carrier Sine wave
         u=[]#Message signal
         b=[0.2,0.4,0.6,0.8,1.0]
-            
-        print("**************************")
-        print(t)
-        print('**********************')
-        print('\n')
+      
 
         plt.plot(t,x);
         plt.xlabel('Time');
@@ -69,53 +69,32 @@ def ASK_Simulate1(A,F1,F2,user_input):
 def ASK_Simulate2(A,F1,F2,user_input):
 
     if user_input == 'Binary':
-        print('Binary')
         # Binary data inputs
         binary_data=[]
-        print('******************************')
-        print('F2',F2)
+        
         s = str(F2)
         for i in range(0,len(s)):
             binary_data.append(int(s[i]))
-        print('************************')
-        print('Binary Data:-')
-        print(binary_data)
+        
         # Convert binary data to a square wave
         square_wave = num.repeat(binary_data, 2)
         square_wave = num.concatenate(([square_wave[0]], square_wave))
 
-        print("*********************")
-        print('Square Wave')
-        print(square_wave)
-        print('********************')
+      
         # Create time axis
         t1 = num.linspace(0, len(binary_data), len(square_wave), endpoint=False)
-        print(t1)
         t2=num.arange(0,len(binary_data),0.001)
-        print('FFFFFF')
         squares = list(square_wave)
         temp = 0
         waves = []
         for i in range(len(t1)):
-            print('NP')
             times=num.arange(temp,t1[i],0.001)
 
             for j in range(len(times)):
                 waves.append(squares[i])
             temp = t1[i]
         t2=num.arange(0,temp,0.001)
-        print("*******************************************************")
-        print('\n')
-        print('\n')
-        print(t2)
-        print('\n')
-        print(len(t2))
-        print('\n')
-        print(waves)
-        print('\n')
-        print(len(waves))
-        print('\n')
-        print('\n')
+       
         # Adjust the length of waves to match the length of t2
         waves = waves[:len(t2)]
 
@@ -139,7 +118,6 @@ def ASK_Simulate2(A,F1,F2,user_input):
                     s=1
                 else:
                     s=0
-                #print(s,i,b)
             u.append(s)
         v=[]#Sine wave multiplied with square wave
         for i in range(len(t)):
