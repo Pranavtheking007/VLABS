@@ -6,7 +6,8 @@ import numpy as num
 from matplotlib.figure import Figure
 import base64
 from io import BytesIO
-
+import io
+import base64
 t=num.arange(0,1,0.001)
 
 def ASK_Simulate1(A,F1,F2,user_input):
@@ -41,12 +42,22 @@ def ASK_Simulate1(A,F1,F2,user_input):
         # data = base64.b64encode(buf.getbuffer()).decode("ascii")
         # print(data)
         # return f"<img src='data:image/png;base64,{data}'/>"
-        plt.plot(t2,x);
-        plt.xlabel('Time');
-        plt.ylabel('Amplitude');
-        plt.title('Carrier');
-        plt.grid(True)
-        plt.show()
+        img = io.BytesIO()
+
+   
+        plt.plot(t2,x)
+        plt.savefig(img, format='png')
+        img.seek(0)
+
+        plot_url = base64.b64encode(img.getvalue()).decode()
+
+        return (plot_url)
+        # plt.plot(t2,x);
+        # plt.xlabel('Time');
+        # plt.ylabel('Amplitude');
+        # plt.title('Carrier');
+        # plt.grid(True)
+        # plt.show()
 
        
     else:

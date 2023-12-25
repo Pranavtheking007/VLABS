@@ -412,8 +412,10 @@ def outform():
         print('\n')
             #print(frequency_of_carrier_signal)
         print(user_input, "POST")
-        ASK.ASK_Simulate1(Amplitude_of_carrier_signal,frequency_of_carrier_signal,frequency_of_Pulse_Signal,user_input), ASK.ASK_Simulate2(Amplitude_of_carrier_signal,frequency_of_carrier_signal,frequency_of_Pulse_Signal,user_input), ASK.ASK_Simulate3(Amplitude_of_carrier_signal,frequency_of_carrier_signal,frequency_of_Pulse_Signal,user_input)
-        return render_template('sim2.html')
+        #ASK.ASK_Simulate1(Amplitude_of_carrier_signal,frequency_of_carrier_signal,frequency_of_Pulse_Signal,user_input), ASK.ASK_Simulate2(Amplitude_of_carrier_signal,frequency_of_carrier_signal,frequency_of_Pulse_Signal,user_input), ASK.ASK_Simulate3(Amplitude_of_carrier_signal,frequency_of_carrier_signal,frequency_of_Pulse_Signal,user_input)
+        data = ASK.ASK_Simulate1(Amplitude_of_carrier_signal,frequency_of_carrier_signal,frequency_of_Pulse_Signal,user_input)
+        return render_template('sim2.html',data=data)
+    
     else:
         user_input = request.form.get('user_input')
         print(user_input, "123456789")
@@ -447,8 +449,8 @@ def sim3_1():
         print('\n')
         print('\n')
 
-        BFSK.BFSK_PLOT1(User_input,Samples,Bit_Rate,frequency_1,frequency_2,Duration,Amplitude,Pulse_Code),BFSK.BFSK_PLOT2(User_input,Samples,Bit_Rate,frequency_1,frequency_2,Duration,Amplitude,Pulse_Code)
-
+        # BFSK.BFSK_PLOT1(User_input,Samples,Bit_Rate,frequency_1,frequency_2,Duration,Amplitude,Pulse_Code),BFSK.BFSK_PLOT2(User_input,Samples,Bit_Rate,frequency_1,frequency_2,Duration,Amplitude,Pulse_Code)
+        data = BFSK.BFSK_PLOT1(User_input,Samples,Bit_Rate,frequency_1,frequency_2,Duration,Amplitude,Pulse_Code)
         return render_template('sim3.html')
 
   
