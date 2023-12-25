@@ -1,5 +1,5 @@
 import matplotlib
-matplotlib.use('TkAgg',force=True)
+matplotlib.use('Agg',force=True)
 
 import matplotlib.pyplot as plt
 import numpy as num
