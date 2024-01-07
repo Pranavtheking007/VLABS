@@ -413,7 +413,7 @@ def outform():
             #print(frequency_of_carrier_signal)
         print(user_input, "POST")
         #ASK.ASK_Simulate1(Amplitude_of_carrier_signal,frequency_of_carrier_signal,frequency_of_Pulse_Signal,user_input), ASK.ASK_Simulate2(Amplitude_of_carrier_signal,frequency_of_carrier_signal,frequency_of_Pulse_Signal,user_input), ASK.ASK_Simulate3(Amplitude_of_carrier_signal,frequency_of_carrier_signal,frequency_of_Pulse_Signal,user_input)
-        data = ASK.ASK_Simulate1(Amplitude_of_carrier_signal,frequency_of_carrier_signal,frequency_of_Pulse_Signal,user_input)
+        data = ASK.ASK_Simulate3(Amplitude_of_carrier_signal,frequency_of_carrier_signal,frequency_of_Pulse_Signal,user_input)
         return render_template('sim2.html',data=data)
     
     else:

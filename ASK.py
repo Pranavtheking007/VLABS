@@ -177,26 +177,37 @@ def ASK_Simulate3(A, F1, F2, user_input):
         x=A*num.sin(2*num.pi*F1*t2)#Carrier Sine wave
         u=[]#Message signal
         b=[0.2,0.4,0.6,0.8,1.0]
-        fig , axs = plt.subplots(3,1,figsize=(50,100))
-        fig.subplots_adjust(hspace=0.7,wspace=0.7)
-        # Plot the ASK signal
-        axs[0].plot(t2, waves, drawstyle='steps-post')
-        axs[0].set_title('Amplitude')
-        axs[0].set_xlabel('yo')
-        axs[0].set_ylabel('Hi')
+        # fig , axs = plt.subplots(3,1,figsize=(50,100))
+        # fig.subplots_adjust(hspace=0.7,wspace=0.7)
+        # # Plot the ASK signal
+        img = io.BytesIO()
 
-        axs[1].plot(t2, v)
-        axs[1].set_title('Sqquare Plot')
-        axs[1].set_xlabel('yo')
-        axs[1].set_ylabel('Hi')
+   
+        # axs[0].plot(t2, waves, drawstyle='steps-post')
+        # axs[0].set_title('Amplitude')
+        # axs[0].set_xlabel('yo')
+        # axs[0].set_ylabel('Hi')
 
-        axs[2].plot(t2,x)
-        axs[2].set_title('ASK WavePlot')
-        axs[2].set_xlabel('yo')
-        axs[2].set_ylabel('Hi')
+        # axs[1].plot(t2, v)
+        # axs[1].set_title('Sqquare Plot')
+        # axs[1].set_xlabel('yo')
+        # axs[1].set_ylabel('Hi')
+
+        # axs[2].plot(t2,x)
+        # axs[2].set_title('ASK WavePlot')
+        # axs[2].set_xlabel('yo')
+        # axs[2].set_ylabel('Hi')
 
         plt.grid(True)
-        plt.show()
+        # plt.show()
+
+        plt.plot(t2,v)
+        plt.savefig(img, format='png')
+        img.seek(0)
+
+        plot_url = base64.b64encode(img.getvalue()).decode()
+
+        return (plot_url)
 
     else:
         # Generate message signal
